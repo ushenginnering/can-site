@@ -13,6 +13,15 @@
     - `> python manage.py runserver`
 
 
-4. navigate to **localhost:8000** and you'll see the website come up
+4. navigate to **localhost:8000** and you'll see the website come up.
 
+
+## Next time you want to run the project these are the next you'll take
+
+1. navigate to the folder of project.
+
+2. Run The Following Command
+    - `> venv\Scripts\activate`
+    - `> pip install -r requirements.txt` > incase i installed new library. 
+    - `> python manage.py runserver`
 
