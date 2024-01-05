@@ -1,94 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
+{% extends "layout.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.theme.default.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <title>Arise Network Church</title>
-</head>
-<body class="font-sans bg-gray-100">
-    
-<style>
-  /* Add this style block to the head of your HTML document or your CSS file */
-
-  .nav-link {
-    position: relative;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-  }
-
-  .nav-link:hover,
-  .nav-link.active {
-    color: #ff9800;
-  }
-
-  .nav-link::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #ff9800;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .nav-link:hover::before,
-  .nav-link.active::before {
-    width: 100%;
-    visibility: visible;
-  } 
-  .fixed-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #000; /* Adjust the background color as needed */
-  }
-
-  .scrolling-nav {
-    transition: background-color 0.3s ease-in-out;
-  }
-</style>
-
-<!-- Navigation Bar -->
-<nav id="navbar" class="bg-black p-4">
-    <div class="container mx-auto flex items-center justify-between">
-        <!-- Logo for Mobile -->
-        <div class="md:hidden">
-            <i class="fas fa-heart text-white"></i>
-        </div>
-
-        <!-- Logo for Larger Screens -->
-        <div class="hidden md:block text-white">
-            <i class="fas fa-heart"></i> <span class="ml-2 font-semibold"> Church Arise Network</span>
-        </div>
-
-        <!-- Hamburger Menu Button -->
-        <div class="md:hidden">
-            <button id="menuToggle" class="text-white focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Navigation Links -->
-        <ul id="navLinks" class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 text-white">
-            <li><a href="#about" class="nav-link py-2">About Us</a></li>
-            <li><a href="#events" class="nav-link py-2">Events</a></li>
-            <li><a href="#ministries" class="nav-link py-2">Ministries</a></li>
-            <li><a href="#connect" class="nav-link py-2">Connect</a></li>
-            <li><a href="#contact" class="nav-link py-2">Contact</a></li>
-        </ul>
-    </div>
-</nav>
+{% endblock head %}
 
 
+{% block body %}
+<div class="class="font-sans bg-gray-100"">
+
+{% include "components/navbar.html" %}
 
 <!-- Side Navigation Menu -->
 <div id="sideNav" class="fixed inset-y-0 left-0 bg-black bg-opacity-90 z-50 hidden md:hidden w-screen">
@@ -390,15 +314,9 @@
 
 
 
-    <!-- Footer -->
-    <footer class="footer bg-gray-800 text-white py-6">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2023 Arise Network Church. All rights reserved.</p>
-        </div>
-    </footer>
+{% include "components/footer.html" %}
+<!-- Add additional scripts or libraries as needed -->
 
-    <!-- Add additional scripts or libraries as needed -->
-    
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
@@ -417,5 +335,5 @@
     });
 </script>
 
-</body>
-</html>
+</div>
+{% endblock body%}

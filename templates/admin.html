@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title id="title">Admin Panel</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!---Include CK editor-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    
+</head>
+<body>
+
+    
+<style>
+    .active-header {
+        background-color: black; /* Set your desired background color */
+        color: white; /* Set text color for visibility */
+    }
+</style>
+
+    </style>
+
+    <div id="nav-here"></div><script src="backend/nav-content.js"></script>
+    
+<div class="container mt-5">
+    <div class="accordion" id="accordionSections">
+
+        
+        <!-- Modal for sending email -->
+        <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="emailModalLabel">Compose Email</h5>
+                        
+                    </div>
+                    <div class="modal-body">
+                        <form id="emailForm">
+                            <div class="form-group">
+                                <label for="emailSubject">Subject:</label>
+                                <input type="text" class="form-control" id="emailSubject" name="emailSubject">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailContent">Email Content:</label>
+                                <textarea class="form-control" id="emailContent" name="emailContent"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="attachment">Attachment:</label>
+                                <input type="file" class="form-control-file" id="attachment" name="attachment">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer mt-5">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="sendEmailButton">Send Email</button>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: About Us -->
+        <div class="card">
+            <div class="card-header" id="headingAboutUs"  data-bs-toggle="collapse"
+            data-bs-target="#collapseAboutUs" aria-expanded="false"
+            aria-controls="collapseAboutUs">
+                <h5 class="mb-0">
+                        About Us
+                </h5>
+            </div>
+            <div id="collapseAboutUs" class="collapse" aria-labelledby="headingAboutUs"
+                data-bs-parent="#accordionSections">
+                <div class="card-body">
+                    <!-- About Us form goes here -->
+
+                    <div class="mb-3">
+                        <label for="organizationName" class="form-label">Organization Name</label>
+                        <input type="text" class="form-control" id="organizationName" name="organizationName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="organizationMailerAddress" class="form-label">Organization Mailer Address</label>
+                        <input type="text" class="form-control" id="organizationMailerAddress" name="organizationMailerAddress">
+                    </div>
+                    <div class="mb-3">
+                        <label for="organizationMailerPassword" class="form-label">Organization Mailer Password</label>
+                        <input type="text" class="form-control" id="organizationMailerPassword" name="organizationMailerPassword">
+                    </div>
+                    <textarea name="aboutUs" id="aboutUs"></textarea>
+                    
+                    <button id="saveAboutUs" class="btn btn-primary mt-5" type="button"><i class="fas fa-save"></i> Submit</button>
+                    <div id="alert-container-aboutus"></div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Setup Conference -->
+        <div class="card">
+            <div class="card-header " id="headingSetupConference" data-bs-toggle="collapse" data-bs-target="#collapseSetupConference" aria-expanded="false" aria-controls="collapseSetupConference">
+                <h5 class="mb-0">
+                        Setup Conference
+                </h5>
+            </div>
+            <div id="collapseSetupConference" class="collapse" aria-labelledby="headingSetupConference"
+            data-bs-parent="#accordionSections">
+           <div class="card-body">
+               <!-- Conference setup form -->
+               <form id="setup-conference-form">
+                   <div class="mb-3 d-none">
+                       <label for="conferenceId" class="form-label">Conference Id</label>
+                       <input type="text" class="form-control" id="conferenceId" name="conferenceId">
+                   </div>
+                   <div class="mb-3">
+                       <label for="conferenceName" class="form-label">Conference Name</label>
+                       <input type="text" class="form-control" id="conferenceName" name="conferenceName">
+                   </div>
+                   <div class="mb-3">
+                       <label for="basePhoto" class="form-label">Base Photo</label>
+                       <input type="file" class="form-control" id="basePhoto" name="basePhoto">
+                   </div>
+                   <div id="show_base_photo"></div>
+                   <div class="mb-3">
+                       <label for="flier" class="form-label">Flier</label>
+                       <input type="file" class="form-control" id="flier" name="flier">
+                   </div>
+                   <div id="show_flier"></div>
+                   <div class="row mb-3">
+                       <div class="col-md-6">
+                           <label for="userImageX" class="form-label">User Image X Position</label>
+                           <input type="number" class="form-control" id="userImageX" name="userImageX">
+                       </div>
+                       <div class="col-md-6">
+                           <label for="userImageY" class="form-label">User Image Y Position</label>
+                           <input type="number" class="form-control" id="userImageY" name="userImageY">
+                       </div>
+                   </div>
+                   <div class="row mb-3">
+                       <div class="col-md-6">
+                           <label for="userImageXsize" class="form-label">User Image X Size</label>
+                           <input type="number" class="form-control" id="userImageXsize" name="userImageXsize">
+                       </div>
+                       <div class="col-md-6">
+                           <label for="userImageYsize" class="form-label">User Image Y Size</label>
+                           <input type="number" class="form-control" id="userImageYsize" name="userImageYsize">
+                       </div>
+                   </div>
+       
+                   <div class="mb-3">
+                       <label for="speakers" class="form-label">Speakers</label>
+                       <textarea class="form-control" id="speakers" name="speakers" rows="3"></textarea>
+                   </div>
+                   <div class="mb-3">
+                       <label for="problemsAddressed" class="form-label">Problems Addressed</label>
+                       <textarea class="form-control" id="problemsAddressed" name="problemsAddressed" rows="3"></textarea>
+                   </div>
+                   <div class="mb-3">
+                       <label for="price" class="form-label">Price</label>
+                       <input type="text" class="form-control" id="price" name="price">
+                   </div>
+                   <div class="mb-3">
+                       <label for="location" class="form-label">Location</label>
+                       <input type="text" class="form-control" id="location" name="location">
+                   </div>
+                   <div class="mb-3">
+                       <label for="date" class="form-label">Date</label>
+                       <input type="date" class="form-control" id="date" name="date">
+                   </div>
+       
+                   <div id="alert-container"></div>
+               </form>
+               <button type="button" class="btn btn-warning mt-5" id="save-conference-btn">
+                   <i class="fas fa-cog"></i> Setup New Conference
+               </button>
+       
+               <button type="button" class="btn btn-primary mt-5" id="update-conference-btn">
+                   <i class="fas fa-cog"></i> Update Conference
+               </button>
+       
+           </div>
+       </div>
+       
+        </div>
+
+        <!-- Section 2: Members -->
+        <div class="card">
+            <div class="card-header" id="headingMembers"  data-bs-toggle="collapse"
+            data-bs-target="#collapseMembers" aria-expanded="false"
+            aria-controls="collapseMembers">
+                <h5 class="mb-0">
+                        Members
+                </h5>
+            </div>
+            <div id="collapseMembers" class="collapse" aria-labelledby="headingMembers"
+                data-bs-parent="#accordionSections">
+                <div class="card-body">
+                    <!-- Members table goes here -->
+                    <table class="table" id="membersTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                                <!-- Add more columns as needed -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table rows will be populated using JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Registered Members -->
+        <div class="card">
+            <div class="card-header" id="headingRegisteredMembers" data-bs-toggle="collapse"
+            data-bs-target="#collapseRegisteredMembers" aria-expanded="false"
+            aria-controls="collapseRegisteredMembers">
+                <h5 class="mb-0">
+                        Registered Participants
+                    
+                </h5>
+            </div>
+            <div id="collapseRegisteredMembers" class="collapse" aria-labelledby="headingRegisteredMembers"
+                data-bs-parent="#accordionSections">
+                <div class="card-body">
+                    <!-- Registered Members form goes here -->
+                    <form id="registered-members-form">
+                        <div class="mb-3">
+                            <label for="selectConference" class="form-label">Select Conference</label>
+                            <!-- Add the select element in your HTML -->
+                            <select class="form-select" id="selectConference" name="selectConference">
+                                <option>select conferenceId</option>
+                                <!-- Options for selecting conference will be populated here -->
+                            </select>
+                        </div>
+                        <!-- Table to display registered members -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>Coming From</th>
+                                    <th>Phone</th>
+                                    <th>presentation</th>
+                                    <th>Details</th>
+                                    <!-- Add more columns as needed -->
+                                </tr>
+                            </thead>
+                            <tbody id="participantTableBody">
+                                <!-- Table rows will be added here -->
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+                <!-- Section 4: Communication -->
+        <div class="card">
+            <div class="card-header" id="headingCommunication" data-bs-toggle="collapse"
+            data-bs-target="#collapseCommunication" aria-expanded="false"
+            aria-controls="collapseCommunication">
+                <h5 class="mb-0">
+                        Communication
+                </h5>
+            </div>
+            <div id="collapseCommunication" class="collapse" aria-labelledby="headingCommunication"
+                data-bs-parent="#accordionSections">
+                <div class="card-body">
+                    <!-- Communication form goes here -->
+                    <form id="communication-form">
+                        <div class="mb-3">
+                            <label for="mixlrStreamingLink" class="form-label">Mixlr Streaming Link</label>
+                            <input type="text" class="form-control" id="mixlrStreamingLink" name="mixlrStreamingLink">
+                        </div>
+                        <div class="mb-3">
+                            <label for="YoutubeStreamingLink" class="form-label">Youtube Streaming Link</label>
+                            <input type="text" class="form-control" id="YoutubeStreamingLink" name="YoutubeStreamingLink">
+                        </div>
+                        <div class="mb-3">
+                            <label for="InstagramStreamingLink" class="form-label">Instagram Streaming Link</label>
+                            <input type="text" class="form-control" id="InstagramStreamingLink" name="InstagramStreamingLink">
+                        </div>
+                        <div class="mb-3">
+                            <label for="FacebookStreamingLink" class="form-label">Facebook Streaming Link</label>
+                            <input type="text" class="form-control" id="FacebookStreamingLink" name="FacebookStreamingLink">
+                        </div>
+                        <div class="mb-3">
+                            <label for="YoutubeChannel" class="form-label">Youtube Channel</label>
+                            <input type="text" class="form-control" id="YoutubeChannel" name="YoutubeChannel">
+                        </div>
+                        <div class="mb-3">
+                            <label for="InstagramAccount" class="form-label">Instagram Account</label>
+                            <input type="text" class="form-control" id="InstagramAccount" name="InstagramAccount">
+                        </div>
+                        <div class="mb-3">
+                            <label for="FacebookAccount" class="form-label">Facebook Account</label>
+                            <input type="text" class="form-control" id="FacebookAccount" name="FacebookAccount">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Communication
+                        </button> 
+                        <div id="alert-container-communication" class="mt-3"></div>
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Partnerships -->
+        <div class="card">
+            <div class="card-header" id="headingPartnerships"  data-bs-toggle="collapse"
+            data-bs-target="#collapsePartnerships" aria-expanded="false"
+            aria-controls="collapsePartnerships">
+                <h5 class="mb-0">
+                        Partnerships
+                </h5>
+            </div>
+            <div id="collapsePartnerships" class="collapse" aria-labelledby="headingPartnerships"
+                data-bs-parent="#accordionSections">
+                <div class="card-body">
+                    <!-- Partnerships form goes here -->
+                    <form id="partnerships-form">
+                        <div class="mb-3">
+                            <label for="paystackPublicKey" class="form-label">Paystack Public Key</label>
+                            <input type="text" class="form-control" id="paystackPublicKey" name="paystackPublicKey">
+                        </div>
+                        <div class="mb-3">
+                            <label for="paystackPrivateKey" class="form-label">Paystack Private Key</label>
+                            <input type="text" class="form-control" id="paystackPrivateKey" name="paystackPrivateKey">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Partnerships
+                        </button>
+                    </form>
+                    <div id="alert-container-partnership" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+
+      
+
+    </div>
+</div>
+
+
+<script>
+    // Replace 'aboutUs' with the actual ID of your textarea element
+    CKEDITOR.replace('aboutUs');
+    CKEDITOR.replace('emailContent');
+</script>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="backend/admin.js"></script>
+</body>
+</html>
