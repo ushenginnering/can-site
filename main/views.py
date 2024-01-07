@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 # Create your views here.
 
@@ -10,7 +11,11 @@ def partner_view(requests):
     return render(requests, 'partner.html')
 
 def admin_view(requests):
-    return render(requests, 'admin.html')
+    if requests.user.is_authenticated and requests.user.is_superuser:
+        return render(requests, 'admin.html')
+    else:
+        messages.error(requests, 'you don\'nt have permission to visit the page')
+        return redirect('/')
 
 def login_view(requests):
     return render(requests, 'login.html')
