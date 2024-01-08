@@ -9,11 +9,47 @@
 <body>
     {% if messages %}
         {% for message in messages %}
-            <div class="alert {{message.tags}} my-2" role="alert">
+            <div class="alert {{message.tags}}" role="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
                 {{message}}
             </div>
         {% endfor %}
     {% endif %}
+
+    <style>
+        .alert {
+            padding: 20px;
+            margin: 20px;
+            color: white;
+            position: fixed;
+            z-index: 10;
+            top: 0px;
+            width: 90%;
+        }
+
+        .error{
+            background-color: #f44336;
+        }
+
+        .success, .info{
+            background-color: rgb(57, 197, 174);
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            }
+
+        .closebtn:hover {
+            color: black;
+            }
+    </style>
     {% block body %}{% endblock body %}
 </body>
 </html>
