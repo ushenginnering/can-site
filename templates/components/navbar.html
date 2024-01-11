@@ -1,78 +1,36 @@
-    
-<style>
-    /* Add this style block to the head of your HTML document or your CSS file */
-  
-    .nav-link {
-      position: relative;
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease-in-out;
-    }
-  
-    .nav-link:hover,
-    .nav-link.active {
-      color: #ff9800;
-    }
-  
-    .nav-link::before {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #ff9800;
-      visibility: hidden;
-      transition: all 0.3s ease-in-out;
-    }
-  
-    .nav-link:hover::before,
-    .nav-link.active::before {
-      width: 100%;
-      visibility: visible;
-    } 
-    .fixed-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #000; /* Adjust the background color as needed */
-    }
-  
-    .scrolling-nav {
-      transition: background-color 0.3s ease-in-out;
-    }
-  </style>
-  
-  <!-- Navigation Bar -->
-  <nav id="navbar" class="bg-black p-4">
-      <div class="container mx-auto flex items-center justify-between">
-          <!-- Logo for Mobile -->
-          <div class="md:hidden">
-              <i class="fas fa-heart text-white"></i>
-          </div>
-  
-          <!-- Logo for Larger Screens -->
-          <div class="hidden md:block text-white">
-              <i class="fas fa-heart"></i> <span class="ml-2 font-semibold"> Church Arise Network</span>
-          </div>
-  
-          <!-- Hamburger Menu Button -->
-          <div class="md:hidden">
-              <button id="menuToggle" class="text-white focus:outline-none">
-                  <i class="fas fa-bars"></i>
-              </button>
-          </div>
-  
-          <!-- Navigation Links -->
-          <ul id="navLinks" class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 text-white">
-              <li><a href="#about" class="nav-link py-2">About Us</a></li>
-              <li><a href="#events" class="nav-link py-2">Events</a></li>
-              <li><a href="#ministries" class="nav-link py-2">Ministries</a></li>
-              <li><a href="#connect" class="nav-link py-2">Connect</a></li>
-              <li><a href="#contact" class="nav-link py-2">Contact</a></li>
-          </ul>
-      </div>
-  </nav>
-  
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+  <a class="navbar-brand" href="#">
+      <i class="fas fa-crown mr-2"></i> Fire Crown Love
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="aboutus.html">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="giving.html">Giving</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="partners.html">Partners</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="publications.html">Publications</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="signup.html">Signup</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="upcoming.html">Upcoming</a>
+          </li>
+      </ul>
+  </div>
+</nav>

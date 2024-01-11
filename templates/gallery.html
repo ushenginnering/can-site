@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <title>Gallery</title>
+{% endblock head %}
+
+{% block body %}
+<div class="bg-dark text-light">
+
+{% include "components/navbar.html" %}
+
+<!-- Header Section with Hero Image -->
+<header>
+        <!-- Navbar included here if needed -->
+
+        <h1 class="display-4 font-weight-bold"  style="margin-top: 20px;">Gallery</h1>
+        <p>An image worth a thousand words</p>
+        
+</header>
+<section class="container my-5">
+    <div class="row">  
+        <div class="col-12">
+            <!-- Image on Mobile View -->
+            <img src="/static/images/gal1.jpg" alt="Image" class="img-fluid d-block d-md-none">
+        </div>
+        <div class="col-md-6">
+            <!-- Image on Desktop View -->
+            <img src="/static/images/gal1.jpg" alt="Image" class="img-fluid d-none d-md-block">
+        </div>
+        <div class="col-md-6">
+            <!-- Text on Desktop View -->
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <h5 class="card-title">Img Title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                   
+                </div>
+            </div>
+        </div>
+      
+    </div>
+</section>
+
+    <!-- Button Section -->
+    <section class="container my-5 text-center">
+        <div class="row">
+            <div class="col-12">
+                <button class="image-button" style="background-image: url('/static/images/gal1.jpg')" onclick="buttonClicked(1)"></button>
+                <button class="image-button" style="background-image: url('/static/images/gal2.jpg')" onclick="buttonClicked(2)"></button>
+                <button class="image-button" style="background-image: url('/static/images/gal3.jpg')" onclick="buttonClicked(3)"></button>
+            </div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="row">
+            <div class="col-6 text-right">
+                <button class="control-buttons" onclick="navigate('back')"><i class="fas fa-chevron-left"></i> Back</button>
+            </div>
+            <div class="col-6 text-left">
+                <button class="control-buttons" onclick="navigate('next')">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    {% include "components/footer.html" %}
+
+    <!-- Owl Carousel Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+   
+   
+    <script>
+        function buttonClicked(buttonNumber) {
+            alert("Button " + buttonNumber + " clicked!");
+            // You can perform additional actions here based on the clicked button.
+        }
+    </script>
+</div>
+
+{% endblock body %}

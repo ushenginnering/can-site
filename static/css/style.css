@@ -1,0 +1,244 @@
+
+/* Reset default styles */
+body, h1, h2, h3, p, ul, ol, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Your Chosen Font', sans-serif;
+    color: #FFD700; /* Gold text for crown element */
+}
+
+/* Common Container Styles */
+header, nav, main, footer {
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    /*background-image: url('bg1.jpg'); Replace with actual crown image */
+    
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    font-size: 3em;
+}
+
+/* Navigation Styles */
+nav {
+    text-align: center;
+    background-color: #0A1172; /* Royal blue navigation background */
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 0.8em;
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+}
+
+/* Element Styles */
+.fire-element, .love-element {
+    margin-bottom: 20px;
+}
+
+.fire-element {
+    background-image: url('fire-illustration.png'); /* Replace with actual fire illustration */
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 200px; /* Adjust the height as needed */
+    border: 2px solid #FF4500; /* Red border for fire element */
+    border-radius: 10px;
+}
+
+.love-element {
+    color: #FF69B4; /* Pink heart color */
+    font-size: 2em;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Default Button Styles */
+.button-default {
+    background-color: #FF4500; /* Red button background */
+    color: white;
+}
+
+.button-default:hover {
+    background-color: #FF6347; /* Lighter red on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        padding: 30px;
+    }
+
+    nav a {
+        margin: 0 10px;
+        font-size: 1em;
+    }
+}
+
+/* Dark Theme Styles */
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+header.dark-theme, footer.dark-theme {
+    text-align: center;
+    padding: 10px;
+}
+
+.thumbnail {
+    border: 1px solid #444;
+    margin: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+}
+
+.thumbnail:hover {
+    border-color: #FF4500; /* Red border on hover */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Custom styles for this page */
+body.custom-page {
+    background-color: #333; /* Dark theme background color */
+    color: #fff; /* Text color */
+}
+
+header.custom-page, section.custom-page, footer.custom-page {
+    margin: 20px;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    background-color: #444; /* Input background color */
+    color: #fff;
+    border: 1px solid #555; /* Input border color */
+    border-radius: 5px;
+}
+
+/* Specific Button Styles for Custom Page */
+button.custom-page-button {
+    background-color: #FF4500; /* Red button background */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.custom-page-button:hover {
+    background-color: #FF6347; /* Lighter red on hover */
+}
+
+footer.custom-page {
+    margin-top: 20px;
+    text-align: center;
+}
+.card, .card-header {
+    background-color: transparent;
+}
+.image-button {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    margin: 5px;
+}
+
+.control-buttons {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+    /* Add a hero image style */
+.hero-section {
+    background-image: url('/static/images/gal3.jpg'); /* Replace 'gal3.jpg' with the actual path to your hero image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 60px 15px; /* Adjust the padding for mobile */
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.5em; /* Adjust font size for mobile */
+    margin-bottom: 15px; /* Adjust margin for mobile */
+}
+
+.hero-section p {
+    font-size: 1em; /* Adjust font size for mobile */
+}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Giving</title>
+{% endblock head %}
+
+{% block body %}
+
+<body class="bg-dark text-light">
+
+{% include "components/navbar.html" %}
+<div style="margin-top: 100px;"></div>
+    <header class="text-center">
+       
+        <h1 class="mt-5"><i class="fas fa-fire"></i> Giving</h1>
+        <p>Thank you for supporting Church Arise Network. Your generosity helps us fulfill our mission.</p>
+    </header>
+
+    <div style="margin-top: 50px;"></div>
+    <section class="container">
+
+        <form action="process_donation.php" method="post">
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="text" class="form-control" id="amount" name="amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="currency">Currency:</label>
+                <select class="form-control" id="currency" name="currency" required>
+                    <option value="usd">USD</option>
+                    <option value="eur">EUR</option>
+                    <option value="gbp">GBP</option>
+                    <!-- Add more options for different currencies -->
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Leave a message (optional):</label>
+                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary"><i class="fas fa-donate"></i> Donate</button>
+        </form>
+    </section>
+
+
+    {% include "components/footer.html" %}
+
+{% endblock body %}

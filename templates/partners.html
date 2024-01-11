@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Partners</title>
+{% endblock head %}
+
+{% block body %}
+<div class="bg-dark text-light">
+    {% include "components/navbar.html" %}
+
+    <header>
+        
+
+<div style="margin-top: 100px; " class="text-center"></div>
+        <h1 class="text-center">Partner Portal</h1>
+        
+<div style="margin-top: 50px; " class="text-center"></div>
+    </header>
+    
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Unit Meeting Report</h2>
+                    <form id="unitMeetingForm">
+                        <div class="form-group">
+                            <label for="meetingDate">Meeting Date:</label>
+                            <input type="date" id="meetingDate" name="meetingDate" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="meetingDetails">Meeting Details:</label>
+                            <textarea id="meetingDetails" name="meetingDetails" rows="4" class="form-control" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit Report</button>
+                    </form>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Welfare Form</h2>
+                    <form id="welfareForm">
+                        <div class="form-group">
+                            <label for="memberName">Member Name:</label>
+                            <input type="text" id="memberName" name="memberName" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="welfareDetails">Welfare Details:</label>
+                            <textarea id="welfareDetails" name="welfareDetails" rows="4" class="form-control" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning">Submit Welfare Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+   {% include "components/footer.html" %}
+</div>
+{% endblock body %}
+

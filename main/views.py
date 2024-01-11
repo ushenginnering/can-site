@@ -8,10 +8,26 @@ from .forms import AboutForm
 
 
 def home(requests):
-    return render(requests, 'home.html')
+    return render(requests, 'index.html')
+
+def about_view(requests):
+    return render(requests, 'aboutus.html')
+
+def gallery_view(requests):
+    return render(requests, 'gallery.html')
 
 def partner_view(requests):
-    return render(requests, 'partner.html')
+    return render(requests, 'partners.html')
+
+def publication_view(requests):
+    return render(requests, 'publications.html')
+
+def giving_view(requests):
+    return render(requests, 'giving.html')
+
+def events_view(requests):
+    return render(requests, 'upcoming.html')
+
 
 def admin_view(requests, about_form=None):
     if requests.user.is_authenticated and requests.user.is_superuser:

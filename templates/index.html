@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Church Arise Network</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+{% endblock head %}
+
+{% block body %}
+    <div class="bg-dark text-light">
+
+    {% include "components/navbar.html" %}
+    
+
+      <!-- Hero Section -->
+      <header class="hero-section">
+        <h1>Welcome Home</h1>
+        <p>Church Arise Network - Institutionalizing Righteousness</p>
+    </header>
+
+    
+    <section class="container mt-5">
+        <h2 class="text-center mb-3">Announcements</h2>
+        <div class="row">
+    
+            <!-- Announcement Card 1 -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="/static/images/gal1.jpg" alt="Announcement 1" class="card-img-top">
+                </div>
+            </div>
+    
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">February Camp Meeting</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt tellus vel metus lacinia, vel pretium est tincidunt.</p>
+                        <button class="btn bg-white  text-bolder" style="float: right;">SignUp Now</button>
+                    </div>
+                        
+                </div>
+            </div>
+    
+            <!-- Repeat for other announcements -->
+            
+        </div>
+    </section>
+    
+    
+
+    <section class="container mt-5">
+        <h2 class="text-center mb-3">Community Member of the Month</h2>
+     
+        
+        <div class="row">    
+            <!-- Announcement Card 1 -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="/static/images/gal2.jpg" alt="Announcement 1" class="card-img-top">
+                </div>
+            </div>
+    
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">February Camp Meeting</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt tellus vel metus lacinia, vel pretium est tincidunt.</p>
+                        
+                    <button class="btn bg-white text-bolder" style="float: right;">Connect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- Repeat for other announcements -->
+            
+    </section>
+
+    <section class="container mt-5">
+        <h2>Follow Us</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="#" class="text-white"><i class="fab fa-whatsapp fa-3x"></i> WhatsApp</a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="text-white"><i class="fab fa-facebook fa-3x"></i> Facebook</a>
+            </div>
+            <div class="col-md-4">
+                <a href="#" class="text-white"><i class="fab fa-telegram fa-3x"></i> Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <div style="margin-top:100px;"></div>
+
+    {% include "components/footer.html" %}
+        
+</div>
+{% endblock body %}
