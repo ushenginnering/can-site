@@ -1,14 +1,17 @@
 import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About
+from .models import About, Announcement
 from .forms import AboutForm
 
 # Create your views here.
 
 
 def home(requests):
-    return render(requests, 'index.html')
+    context = {
+        'announcements' : Announcement.objects.all()
+    }
+    return render(requests, 'index.html', context)
 
 def about_view(requests):
     return render(requests, 'aboutus.html')

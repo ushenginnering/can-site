@@ -6,3 +6,12 @@ class About(models.Model):
     organization_mailer_address  = models.EmailField(max_length=254)
     organization_mailer_password = models.CharField(max_length=100)
     body                         = models.TextField()
+
+class Announcement(models.Model):
+    image       = models.ImageField( upload_to='announcement', )
+    headline    = models.CharField(max_length=100)
+    body        = models.TextField()
+
+    def __str__(self):
+        return self.headline
+    
