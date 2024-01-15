@@ -1,0 +1,12 @@
+#gallery-container{
+    box-sizing: border-box;
+    display: flex;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.gallery-item{
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    padding: 20px;
+}

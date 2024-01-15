@@ -1,7 +1,7 @@
 import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About, Announcement
+from .models import About, Announcement, Gallery
 from .forms import AboutForm
 
 # Create your views here.
@@ -9,7 +9,7 @@ from .forms import AboutForm
 
 def home(requests):
     context = {
-        'announcements' : Announcement.objects.all()
+        'announcements' : list(Announcement.objects.all()),
     }
     return render(requests, 'index.html', context)
 
@@ -17,7 +17,10 @@ def about_view(requests):
     return render(requests, 'aboutus.html')
 
 def gallery_view(requests):
-    return render(requests, 'gallery.html')
+    context = {
+        'gallery': Gallery.objects.all()
+    }
+    return render(requests, 'gallery.html', context)
 
 def partner_view(requests):
     return render(requests, 'partners.html')
