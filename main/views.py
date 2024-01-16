@@ -1,8 +1,11 @@
 import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About, Announcement, Gallery
+from .models import About, Announcement, Gallery, Giving
+
 from .forms import AboutForm
+from .Paystack import PayStack
+import requests
 
 # Create your views here.
 
@@ -29,7 +32,23 @@ def publication_view(requests):
     return render(requests, 'publications.html')
 
 def giving_view(requests):
+    if requests.method == 'POST':
+        email = requests.user.email if requests.user.is_authenticated else "unknown@gmail.com"
+
+        amount = int(requests.POST.get('amount'))
+        message = requests.POST.get('message')
+
+        redirect_url = PayStack.generate_checkout_url(email,  amount * 100)
+
+        # save infor to database
+        Giving.objects.create(amount = amount, message = message)
+        return redirect(redirect_url)
     return render(requests, 'giving.html')
+
+def verify_giving_callback(requests):
+    reference = requests.GET.get('reference')
+    messages.success('Thanks for making donations, God sees and rewards openly')
+    return redirect('/giving')
 
 def events_view(requests):
     return render(requests, 'upcoming.html')

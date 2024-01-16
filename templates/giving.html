@@ -19,20 +19,11 @@
     <div style="margin-top: 50px;"></div>
     <section class="container">
 
-        <form action="process_donation.php" method="post">
+        <form action='{% url "giving" %}' method="post"> 
+            {% csrf_token %}
             <div class="form-group">
                 <label for="amount">Amount:</label>
-                <input type="text" class="form-control" id="amount" name="amount" required>
-            </div>
-
-            <div class="form-group">
-                <label for="currency">Currency:</label>
-                <select class="form-control" id="currency" name="currency" required>
-                    <option value="usd">USD</option>
-                    <option value="eur">EUR</option>
-                    <option value="gbp">GBP</option>
-                    <!-- Add more options for different currencies -->
-                </select>
+                <input type="number" class="form-control" id="amount" name="amount" required>
             </div>
 
             <div class="form-group">

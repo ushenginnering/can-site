@@ -124,3 +124,7 @@ MEDIA_ROOT = os.environ.get('MEDIA_ROOT')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# paystack settings
+PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')

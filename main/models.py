@@ -25,5 +25,5 @@ class Gallery(models.Model):
 
 class Giving(models.Model):
     amount = models.PositiveIntegerField()
-    message = models.TextField(empty=True, blank=True)
+    message = models.TextField(null=True, blank=True)
     
