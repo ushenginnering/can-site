@@ -22,4 +22,8 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.title
+
+class Giving(models.Model):
+    amount = models.PositiveIntegerField()
+    message = models.TextField(empty=True, blank=True)
     
