@@ -47,8 +47,8 @@ def giving_view(requests):
 
 def verify_giving_callback(requests):
     reference = requests.GET.get('reference')
-    messages.success('Thanks for making donations, God sees and rewards openly')
-    return redirect('/giving')
+    messages.success(requests, 'Thanks for making donations, God sees and rewards openly')
+    return redirect('/')
 
 def events_view(requests):
     return render(requests, 'upcoming.html')
