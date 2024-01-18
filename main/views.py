@@ -1,7 +1,7 @@
 import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About, Announcement, Gallery, Giving, MeetingReport
+from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare
 
 from .forms import AboutForm
 from .Paystack import PayStack
@@ -34,7 +34,7 @@ def meeting_view(request):
         meeting_report_details = request.POST.get('meetingDetails')
 
         if not meeting_report_date or not meeting_report_details:
-            messages.error(request, 'please fill in the data and details field accordinly')
+            messages.error(request, 'please fill in the date and details field accordinly')
             return redirect('/partner')
         
         messages.success(request, 'successfully saved meeting report and has been sent to all admins')
@@ -42,6 +42,19 @@ def meeting_view(request):
 
     return redirect('/partner')
 
+def welfare_view(request):
+    if request.method == 'POST':
+        welfare_member_name = request.POST.get('memberName')
+        welfare_report_details = request.POST.get('welfareDetails')
+
+        if not welfare_member_name or not welfare_report_details:
+            messages.error(request, 'please fill in the member\'s name and details field accordinly')
+            return redirect('/partner')
+        
+        messages.success(request, 'successfully saved welfare report and has been sent to all admins')
+        Welfare.objects.create(member_name=welfare_member_name, details=welfare_report_details)
+
+    return redirect('/partner')
 
 def publication_view(requests):
     return render(requests, 'publications.html')

@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h2>Unit Meeting Report</h2>
-                    <form id="unitMeetingForm" action="{% url "meeting" %}" method="post">
+                    <form id="unitMeetingForm" action='{% url "meeting" %}' method="post">
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="meetingDate">Meeting Date:</label>
@@ -40,7 +40,8 @@
 
                 <div class="col-md-6">
                     <h2>Welfare Form</h2>
-                    <form id="welfareForm">
+                    <form id="welfareForm" action='{% url "welfare" %}' method="post">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="memberName">Member Name:</label>
                             <input type="text" id="memberName" name="memberName" class="form-control" required>
