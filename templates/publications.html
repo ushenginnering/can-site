@@ -25,7 +25,7 @@
                         <div class="card">
                             <img src="{{ publication.image.url }}" class="card-img-top" alt="Students Meeting Guide">
                             <div class="card-body text-dark">
-                                <h2 class="card-title"><i class="fas fa-user-graduate"></i> {{ publication.headline }}</h2>
+                                <h2 class="card-title"><i class="fas {{ publication.fontawesome_class }}"></i> {{ publication.headline }}</h2>
                                 <p class="card-text">"{{ publication.description }}</p>
                                 <a href="path-to-students-pdf" class="btn btn-warning" download><i class="fas fa-download"></i> Download PDF</a>
                             </div>
@@ -33,44 +33,6 @@
                     </section>
                 </div>
             {% endfor %}
-            <div class="col-4">
-                <section id="students" class="container ">
-                    <div class="card">
-                        <img src="/static/images/gal1.jpg" class="card-img-top" alt="Students Meeting Guide">
-                        <div class="card-body text-dark">
-                            <h2 class="card-title"><i class="fas fa-user-graduate"></i> Students Meeting Guide</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt tellus vel metus lacinia, vel pretium est tincidunt.</p>
-                            <a href="path-to-students-pdf" class="btn btn-warning" download><i class="fas fa-download"></i> Download PDF</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="col-4">
-                <section id="family" class="container ">
-                    <div class="card">
-                        <img src="/static/images/gal2.jpg" class="card-img-top" alt="Family Meeting Guide">
-                        <div class="card-body text-dark">
-                            <h2 class="card-title"><i class="fas fa-users"></i> Family Meeting Guide</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt tellus vel metus lacinia, vel pretium est tincidunt.</p>
-                            <a href="path-to-family-pdf" class="btn btn-warning" download><i class="fas fa-download"></i> Download PDF</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div class="col-4">
-                
-                <section id="corporate" class="container ">
-                    <div class="card ">
-                        <img src="/static/images/gal3.jpg" class="card-img-top" alt="Corporate Meeting Guide">
-                        <div class="card-body text-dark">
-                            <h2 class="card-title"><i class="fas fa-building"></i> Corporate Meeting Guide</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt tellus vel metus lacinia, vel pretium est tincidunt.</p>
-                            <a href="path-to-corporate-pdf" class="btn btn-warning" download><i class="fas fa-download"></i> Download PDF</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
         </div>
     </div>
 

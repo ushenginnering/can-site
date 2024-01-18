@@ -47,6 +47,7 @@ class Welfare(models.Model):
 class Publication(models.Model):
     image        = models.ImageField( upload_to='publication', )
     headline     = models.CharField(max_length=100)
+    fontawesome_class      = models.CharField(max_length=50, default='fa-user-graduate')
     description  = models.TextField()
 
     def __str__(self):
