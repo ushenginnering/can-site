@@ -37,7 +37,7 @@ class MeetingReport(models.Model):
         return self.details[0: 10]
     
 class Welfare(models.Model):
-    member_name = models.DateField()
+    member_name = models.CharField(max_length=100)
     details = models.TextField()
     date = models.DateField(auto_now_add=True)
 
