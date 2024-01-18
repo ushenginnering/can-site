@@ -128,3 +128,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # paystack settings
 PAYSTACK_SECRET_KEY = os.environ.get('PAYSTACK_SECRET_KEY')
+
+
+#DJANGO email backend
+# Use the default EmailBackend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'churcharisenetwork.com.ng'
+EMAIL_HOST_USER = 'automate@churcharisenetwork.com.ng'
+EMAIL_HOST_PASSWORD = 'hg92SNYLCuZnE8t'
+EMAIL_PORT = 465 # or your SMTP server port
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
