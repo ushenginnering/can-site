@@ -26,4 +26,21 @@ class Gallery(models.Model):
 class Giving(models.Model):
     amount = models.PositiveIntegerField()
     message = models.TextField(null=True, blank=True)
+
+
+class MeetingReport(models.Model):
+    date = models.DateField()
+    details = models.TextField()
+
+
+    def __str__(self):
+        return self.details[0: 10]
+    
+class Welfare(models.Model):
+    member_name = models.DateField()
+    details = models.TextField()
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.member_name + ": " + self.details[0: 10]
     
