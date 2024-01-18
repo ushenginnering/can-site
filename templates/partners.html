@@ -1,22 +1,21 @@
 {% extends "layout.html" %}
 
 {% block head %}
-    <title>Partners</title>
+<title>Partners</title>
 {% endblock head %}
 
 {% block body %}
-<div class="bg-dark text-light">
+<div class="bg-dark text-light " style="height: 100%;">
     {% include "components/navbar.html" %}
 
     <header>
-        
 
-<div style="margin-top: 100px; " class="text-center"></div>
+
         <h1 class="text-center">Partner Portal</h1>
-        
-<div style="margin-top: 50px; " class="text-center"></div>
+
+        <div style="margin-top: 50px; " class="text-center"></div>
     </header>
-    
+
     <section>
         <div class="container">
             <div class="row">
@@ -30,7 +29,8 @@
 
                         <div class="form-group">
                             <label for="meetingDetails">Meeting Details:</label>
-                            <textarea id="meetingDetails" name="meetingDetails" rows="4" class="form-control" required></textarea>
+                            <textarea id="meetingDetails" name="meetingDetails" rows="4" class="form-control"
+                                required></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit Report</button>
@@ -47,7 +47,8 @@
 
                         <div class="form-group">
                             <label for="welfareDetails">Welfare Details:</label>
-                            <textarea id="welfareDetails" name="welfareDetails" rows="4" class="form-control" required></textarea>
+                            <textarea id="welfareDetails" name="welfareDetails" rows="4" class="form-control"
+                                required></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-warning">Submit Welfare Request</button>
@@ -58,7 +59,6 @@
     </section>
 
 
-   {% include "components/footer.html" %}
+    {% include "components/footer.html" %}
 </div>
 {% endblock body %}
-

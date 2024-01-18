@@ -26,7 +26,7 @@ def gallery_view(requests):
     return render(requests, 'gallery.html', context)
 
 def partner_view(requests):
-    return render(requests, 'partner.html')
+    return render(requests, 'partners.html')
 
 def publication_view(requests):
     return render(requests, 'publications.html')
