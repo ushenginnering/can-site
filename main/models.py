@@ -45,9 +45,9 @@ class Welfare(models.Model):
         return self.member_name + ": " + self.details[0: 10]
 
 class Publication(models.Model):
-    image       = models.ImageField( upload_to='publication', )
+    image        = models.ImageField( upload_to='publication', )
     headline     = models.CharField(max_length=100)
-    description        = models.TextField()
+    description  = models.TextField()
 
     def __str__(self):
         return self.headline

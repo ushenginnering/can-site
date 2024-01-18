@@ -1,7 +1,7 @@
 import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare
+from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare, Publication
 
 from .forms import AboutForm
 from .Paystack import PayStack
@@ -57,7 +57,11 @@ def welfare_view(request):
     return redirect('/partner')
 
 def publication_view(requests):
-    return render(requests, 'publications.html')
+    context = {
+        'publications': Publication.objects.all(),
+    }
+    print(Publication.objects.all())
+    return render(requests, 'publications.html', context)
 
 def giving_view(requests):
     if requests.method == 'POST':
