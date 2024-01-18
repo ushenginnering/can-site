@@ -1,7 +1,7 @@
 import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About, Announcement, Gallery, Giving
+from .models import About, Announcement, Gallery, Giving, MeetingReport
 
 from .forms import AboutForm
 from .Paystack import PayStack
@@ -27,6 +27,21 @@ def gallery_view(requests):
 
 def partner_view(requests):
     return render(requests, 'partners.html')
+
+def meeting_view(request):
+    if request.method == 'POST':
+        meeting_report_date = request.POST.get('meetingDate')
+        meeting_report_details = request.POST.get('meetingDetails')
+
+        if not meeting_report_date or not meeting_report_details:
+            messages.error(request, 'please fill in the data and details field accordinly')
+            return redirect('/partner')
+        
+        messages.success(request, 'successfully saved meeting report and has been sent to all admins')
+        MeetingReport.objects.create(date=meeting_report_date, details=meeting_report_details)
+
+    return redirect('/partner')
+
 
 def publication_view(requests):
     return render(requests, 'publications.html')
