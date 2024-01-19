@@ -15,6 +15,23 @@
         </header>
     
         <section class="event container mt-5">
+            {% for event in  events %}
+            <div class="row mb-4">
+                <div class="col-md-6 d-md-flex justify-content-end">
+                    <img src="{{ event.banner.url }}" alt="February Camp Meeting" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6 event-details">
+                    <h2 class="text-white">{{ event.title }}</h2>
+                    <p class="text-white-50">{{ event.breif_description }}</p>
+                    <p class="text-white-50">Registration Starts: {{ event.registration_start_date }}</p>
+                    <p class="text-white-50">Registration Ends: {{ event.registration_end_date }}</p>
+                    <p class="text-white-50">Hybrid Meeting</p>
+                    <p class="text-white-50">Event Date: {{ event.event_date }}</p>
+                    <p><button class="btn bg-white mt-5">Register now</button></p>
+                </div>
+            </div>
+            {% endfor %}
+
             <div class="row">
                 <div class="col-md-6">
                     <img src="https://via.placeholder.com/600x400" alt="February Camp Meeting" class="img-fluid rounded">
@@ -29,6 +46,7 @@
                     <p><button class="btn bg-white mt-5">Register now</button></p>
                 </div>
             </div>
+            
         </section>
     
         <!-- Repeat the above section for other upcoming events -->

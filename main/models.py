@@ -53,3 +53,15 @@ class Publication(models.Model):
     def __str__(self):
         return self.headline
     
+class Event(models.Model):
+    title = models.CharField(max_length=80)
+    banner = models.ImageField(upload_to='events')
+    breif_description = models.CharField(max_length=200)
+    event_date = models.DateTimeField()
+    registration_start_date = models.DateField(blank=True)
+    registration_end_date = models.DateField(blank=True)
+    registration_url = models.URLField(max_length=200)
+
+    def __str__(self):
+        return self.title
+    

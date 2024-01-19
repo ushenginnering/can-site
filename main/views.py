@@ -1,7 +1,7 @@
 import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare, Publication
+from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare, Publication, Event
 
 from .forms import AboutForm
 from .Paystack import PayStack
@@ -83,7 +83,10 @@ def verify_giving_callback(requests):
     return redirect('/')
 
 def events_view(requests):
-    return render(requests, 'upcoming.html')
+    context = {
+        "events": Event.objects.all(),
+    }
+    return render(requests, 'upcoming.html', context)
 
 
 def login_view(requests):
