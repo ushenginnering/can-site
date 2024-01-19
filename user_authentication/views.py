@@ -28,11 +28,7 @@ from .forms import LoginForm, RegisterForm
 
 # routes for user registration
 def register(request):
-    user = request.user
-    if not user.is_authenticated and not user.is_superuser:
-        messages.error(request, 'you don\'n have permission to visit this page')
-        return redirect('home')
-    
+
     if request.method == 'POST':
         form = RegisterForm(request.POST)
 
@@ -40,17 +36,46 @@ def register(request):
             # form.save only works when form is created from a model
             form.save()
             messages.success(request, 'succesfully created account')
-            return redirect('login')
+            return redirect('/')
         else:
             # rendering the template again if the form is not valid with the prepopulated data.
             return render(request, 'signup.html', {'form': form})
-
     else:
         form = RegisterForm()
         return render(request, 'signup.html', {'form': form})
-
+    
 
 def login_user(request):
+    # redirect user to home if already logged in
+    if request.user.is_authenticated:
+        messages.info(request, 'You Are Already Logged In')
+        return redirect('/admin')
+
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+
+        if form.is_valid():
+            print(form.cleaned_data)
+            username = User.objects.filter(email = form.cleaned_data.get('email')).first()
+            # the authenticate function returns the user object if the user is found else it returns none
+            user = authenticate(username=username, password=form.cleaned_data.get('password'))
+            if user:
+                login(request, user)
+                messages.success(request, f'successfully logged in as {user.username}')
+                return redirect('/')
+            else:
+                messages.error(request, 'Invalid credentials')
+                # form.add_error('user not found')
+                return redirect('/login')
+
+        # if form is not valid render the template again with pre populated data
+        else:
+            return render(request, 'login.html', {'form': form})
+    else:
+        form = LoginForm()
+        return render(request, 'login.html', {'form': form})
+
+def login_admin_user(request):
     # redirect user to home if already logged in
     if request.user.is_authenticated:
         messages.info(request, 'You Are Already Logged In')

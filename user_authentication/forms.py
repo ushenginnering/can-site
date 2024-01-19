@@ -33,11 +33,16 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         # specify field to be displayed from model here
-        fields = ('username','email','password1', 'password2')
+        fields = ('first_name', 'last_name', 'email','password1', 'password2')
         widgets = {
             'email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email adress', 'required': 'true'}),
             'username': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(RegisterForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
 
 
     def save(self, commit = True):
