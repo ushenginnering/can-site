@@ -27,7 +27,7 @@
                             <div class="card-body text-dark">
                                 <h2 class="card-title"><i class="fas {{ publication.fontawesome_class }}"></i> {{ publication.headline }}</h2>
                                 <p class="card-text">"{{ publication.description }}</p>
-                                <a href="path-to-students-pdf" class="btn btn-warning" download><i class="fas fa-download"></i> Download PDF</a>
+                                <a href="{{ publication.file.url }}" class="btn btn-warning" download><i class="fas fa-download"></i> Download PDF</a>
                             </div>
                         </div>
                     </section>

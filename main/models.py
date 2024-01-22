@@ -49,6 +49,7 @@ class Publication(models.Model):
     headline     = models.CharField(max_length=100)
     fontawesome_class      = models.CharField(max_length=50, default='fa-user-graduate')
     description  = models.TextField()
+    file         = models.FileField(upload_to='publication_files')
 
     def __str__(self):
         return self.headline
