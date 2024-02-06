@@ -4,7 +4,7 @@ from django.urls import re_path, path
 from user_authentication import views
 
 urlpatterns = [
-    # re_path('login/?', views.login_user, name='login'),
+    re_path('login/?', views.login_user, name='login'),
     re_path('signup/?', views.register, name='register'),
     re_path('logout/?', views.logout_user, name='logout'),
     
