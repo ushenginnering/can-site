@@ -1,12 +1,114 @@
-#gallery-container{
+#gallery-container {
     box-sizing: border-box;
     display: flex;
     overflow-x: hidden;
     width: 100%;
 }
 
-.gallery-item{
+.gallery-item {
     box-sizing: border-box;
     flex: 0 0 100%;
     padding: 20px;
+}
+
+#gallery-wrapper {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: none;
+    gap: 25px;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 32%);
+        grid-auto-rows: 300px;
+        gap: 25px;
+    }
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100vh;
+    /* Full height */
+    overflow: hidden;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: min(90%, 700px);
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content,
+#caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+img{
+    object-fit: cover;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+#close {
+    transition: 0.3s; 
+    position: absolute;
+    top: 45px;
+    right: 35px;
+    font-size: 40px;
+    z-index: 10;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
 }
