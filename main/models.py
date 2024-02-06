@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class About(models.Model):
@@ -54,6 +55,15 @@ class Publication(models.Model):
     def __str__(self):
         return self.headline
     
+class PublicationPayment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    publication = models.ForeignKey(Publication, on_delete=models.CASCADE)
+    payment_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.publication.title}"
+    
+
 class Event(models.Model):
     title = models.CharField(max_length=80)
     banner = models.ImageField(upload_to='events')
