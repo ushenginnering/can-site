@@ -49,7 +49,7 @@ def login_user(request):
     # redirect user to home if already logged in
     if request.user.is_authenticated:
         messages.info(request, 'You Are Already Logged In')
-        return redirect('/admin')
+        return redirect('/')
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -91,8 +91,7 @@ def login_admin_user(request):
             user = authenticate(username=username, password=form.cleaned_data.get('password'))
             if user and user.is_superuser:
                 login(request, user)
-                messages.success(request, 
-                f'successfully logged in as {user.username}')
+                messages.success(request, f'successfully logged in as {user.username}')
                 return redirect('/admin')
             else:
                 messages.error(request, 'Invalid credentials')

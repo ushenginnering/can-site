@@ -35,6 +35,7 @@ INSTALLED_APPS = [
 
     "main",
     "user_authentication",
+    "publication",
 ]
 
 MIDDLEWARE = [

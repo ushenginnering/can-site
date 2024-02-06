@@ -56,13 +56,6 @@ def welfare_view(request):
 
     return redirect('/partner')
 
-def publication_view(requests):
-    context = {
-        'publications': Publication.objects.all(),
-    }
-    print(Publication.objects.all())
-    return render(requests, 'publications.html', context)
-
 def giving_view(requests):
     if requests.method == 'POST':
         email = requests.user.email if requests.user.is_authenticated else "unknown@gmail.com"
