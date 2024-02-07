@@ -51,6 +51,7 @@ class Publication(models.Model):
     fontawesome_class      = models.CharField(max_length=50, default='fa-user-graduate')
     description  = models.TextField()
     file         = models.FileField(upload_to='publication_files')
+    price        = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.headline
@@ -61,7 +62,7 @@ class PublicationPayment(models.Model):
     payment_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.publication.title}"
+        return f"{self.user.username} - {self.publication.headline}"
     
 
 class Event(models.Model):
