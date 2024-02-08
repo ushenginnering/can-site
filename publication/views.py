@@ -37,21 +37,20 @@ def initiate_payment(request, publication_id):
         return redirect(redirect_url)
     
 def verify_payment(request):
-    if request.method == 'POST':
-        # Get reference from the callback data
-        reference = request.POST.get('reference')
+    # Get reference from the callback data
+    reference = request.POST.get('reference')
 
-        #get payment information
-        payment_info = PayStack.verify_payment(reference)
+    #get payment information
+    payment_info = PayStack.verify_payment(reference)
 
-        if payment_info and payment_info['status'] == 'success':
-            if payment_info.get('metadata').get('transaction_type') == transaction_type.BOOK_PAYMENT:
-                publication = PublicationPayment.objects.get(id=reference)
-                publication.approved = True
-                publication.save()
-                messages.success(request, 'Successfully paid for publication, you can go ahead to download')
-                return redirect(reverse('publication'))
-            else:
-                messages.success(request, 'Thanks for making donations, God sees and rewards openly')
-                return redirect('/')
+    if payment_info and payment_info['status'] == 'success':
+        if payment_info.get('metadata').get('transaction_type') == transaction_type.BOOK_PAYMENT:
+            publication = PublicationPayment.objects.get(id=reference)
+            publication.approved = True
+            publication.save()
+            messages.success(request, 'Successfully paid for publication, you can go ahead to download')
+            return redirect(reverse('publication'))
+        else:
+            messages.success(request, 'Thanks for making donations, God sees and rewards openly')
+            return redirect('/')
 
