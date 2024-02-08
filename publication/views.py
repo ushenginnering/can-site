@@ -7,6 +7,13 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.contrib import messages
 
+
+import logging
+
+logging.basicConfig(level=logging.WARNING)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
 # Create your views here.
 def publication_view(requests):
 
@@ -32,20 +39,25 @@ def initiate_payment(request, publication_id):
         # Create payment on Paystack
         redirect_url = PayStack.generate_checkout_url(request.user.email,  publication.price * 100,
                                                        ref=publication_payment.id,
-                                                       metadata={'transaction_type': transaction_type.BOOK_PAYMENT})
+                                                       metadata={
+                                                           'transaction_type': transaction_type.BOOK_PAYMENT,
+                                                           'publication_id': publication_payment.id
+                                                           })
         
         return redirect(redirect_url)
     
 def verify_payment(request):
     # Get reference from the callback data
-    reference = request.POST.get('reference')
+    reference = request.GET.get('reference')
 
     #get payment information
     payment_info = PayStack.verify_payment(reference)
+    print(payment_info)
 
     if payment_info and payment_info['status'] == 'success':
         if payment_info.get('metadata').get('transaction_type') == transaction_type.BOOK_PAYMENT:
-            publication = PublicationPayment.objects.get(id=reference)
+            publication_id = payment_info.get('metadata').get('publication_id')
+            publication = PublicationPayment.objects.get(id=publication_id)
             publication.approved = True
             publication.save()
             messages.success(request, 'Successfully paid for publication, you can go ahead to download')
@@ -53,4 +65,8 @@ def verify_payment(request):
         else:
             messages.success(request, 'Thanks for making donations, God sees and rewards openly')
             return redirect('/')
+
+    else: 
+        messages.error(request, 'invalid payment')
+        return redirect('/')
 

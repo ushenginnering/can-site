@@ -43,7 +43,7 @@ class PayStack:
         url = self.base_url + path
 
         response = requests.get(url, headers=self.headers)
-
+        print(response)
         if response.status_code == 200:
             return response.json().get('data')
         
