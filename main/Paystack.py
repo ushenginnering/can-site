@@ -12,18 +12,26 @@ class PayStack:
 
     
     @classmethod
-    def generate_checkout_url(self, email, amount, ref=None):
+    def generate_checkout_url(self, email, amount, ref=None, currency='NGN'):
         path = ('transaction/initialize/')
+
+        if currency not in ['NGN', "USD", "GHS", "ZAR", "KES"]:
+            currency = 'NGN'
 
         url = self.base_url + path
         body = {
             'email': email,
             'amount': amount,
+            'currency': currency,
         }
 
         if ref:
             body['ref'] = ref
 
         response = requests.post(url, headers=self.headers, json=body)
+        print(response)
 
-        return response.json().get('data').get('authorization_url')
+        if response.status_code == 200:
+            return response.json().get('data').get('authorization_url')
+        
+        return None

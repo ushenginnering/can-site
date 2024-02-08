@@ -62,12 +62,17 @@ def giving_view(requests):
 
         amount = int(requests.POST.get('amount'))
         message = requests.POST.get('message')
+        currency = requests.POST.get('currency')
+        print(currency)
 
-        redirect_url = PayStack.generate_checkout_url(email,  amount * 100)
-
-        # save infor to database
-        Giving.objects.create(amount = amount, message = message)
-        return redirect(redirect_url)
+        redirect_url = PayStack.generate_checkout_url(email,  amount * 100, currency=currency)
+        
+        if redirect_url:
+            # save infor to database
+            Giving.objects.create(amount = amount, message = message)
+            return redirect(redirect_url)
+        else: 
+            messages.error(requests, "something went wrong, please try selecting another curreny")
     return render(requests, 'giving.html')
 
 def verify_giving_callback(requests):
