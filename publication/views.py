@@ -1,21 +1,22 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from main.models import Publication, PublicationPayment
 from main.Paystack import PayStack
+from . import transaction_type
 
 from django.conf import settings
 from django.http import JsonResponse
+from django.contrib import messages
 
 # Create your views here.
 def publication_view(requests):
 
     publication_payments = []
     if requests.user.is_authenticated:
-       publication_payments = PublicationPayment.objects.filter(user = requests.user).values_list('publication_id', flat=True)
+       publication_payments = PublicationPayment.objects.filter(user = requests.user, approved=True).values_list('publication_id', flat=True)
 
     context = {
         'publications': Publication.objects.all(),
         'publication_payments': publication_payments,
-        'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY,
     }
     return render(requests, 'publications.html', context)
 
@@ -30,7 +31,8 @@ def initiate_payment(request, publication_id):
 
         # Create payment on Paystack
         redirect_url = PayStack.generate_checkout_url(request.user.email,  publication.price * 100,
-                                                       ref=publication_payment.id)
+                                                       ref=publication_payment.id,
+                                                       metadata={'transaction_type': transaction_type.BOOK_PAYMENT})
         
         return redirect(redirect_url)
     
@@ -39,14 +41,17 @@ def verify_payment(request):
         # Get reference from the callback data
         reference = request.POST.get('reference')
 
-        # Verify the payment with Paystack
-        # response = paystack_api.verify(reference)
-        # status = response['data']['status']
+        #get payment information
+        payment_info = PayStack.verify_payment(reference)
 
-        # # Handle payment status accordingly
-        # if status == 'success':
-        #     # Payment successful, update your database or perform other actions
-        #     return JsonResponse({'status': 'success'})
-        # else:
-        #     # Payment failed or pending, handle as needed
-        #     return JsonResponse({'status': 'failed'})
+        if payment_info and payment_info['status'] == 'success':
+            if payment_info.get('metadata').get('transaction_type') == transaction_type.BOOK_PAYMENT:
+                publication = PublicationPayment.objects.get(id=reference)
+                publication.approved = True
+                publication.save()
+                messages.success(request, 'Successfully paid for publication, you can go ahead to download')
+                return redirect(reverse('publication'))
+            else:
+                messages.success(request, 'Thanks for making donations, God sees and rewards openly')
+                return redirect('/')
+

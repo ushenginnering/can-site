@@ -2,6 +2,7 @@ import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare, Publication, Event
+from publication import transaction_type
 
 from .forms import AboutForm
 from .Paystack import PayStack
@@ -65,7 +66,9 @@ def giving_view(requests):
         currency = requests.POST.get('currency')
         print(currency)
 
-        redirect_url = PayStack.generate_checkout_url(email,  amount * 100, currency=currency)
+        redirect_url = PayStack.generate_checkout_url(email,  amount * 100, 
+                                                      currency=currency,  
+                                                      metadata={'transaction_type': transaction_type.GIVING})
         
         if redirect_url:
             # save infor to database

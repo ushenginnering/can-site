@@ -12,7 +12,7 @@ class PayStack:
 
     
     @classmethod
-    def generate_checkout_url(self, email, amount, ref=None, currency='NGN'):
+    def generate_checkout_url(self, email, amount, ref=None, currency='NGN', metadata=None):
         path = ('transaction/initialize/')
 
         if currency not in ['NGN', "USD", "GHS", "ZAR", "KES"]:
@@ -23,6 +23,7 @@ class PayStack:
             'email': email,
             'amount': amount,
             'currency': currency,
+            'metadata': metadata,
         }
 
         if ref:
@@ -33,5 +34,17 @@ class PayStack:
 
         if response.status_code == 200:
             return response.json().get('data').get('authorization_url')
+        
+        return None
+    
+    @classmethod
+    def verify_payment(self, reference):
+        path = (f'transaction/verify/{reference}')
+        url = self.base_url + path
+
+        response = requests.get(url, headers=self.headers)
+
+        if response.status_code == 200:
+            return response.json().get('data')
         
         return None
