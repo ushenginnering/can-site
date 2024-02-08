@@ -12,7 +12,7 @@ class PayStack:
 
     
     @classmethod
-    def generate_checkout_url(self, email, amount):
+    def generate_checkout_url(self, email, amount, ref=None):
         path = ('transaction/initialize/')
 
         url = self.base_url + path
@@ -20,6 +20,9 @@ class PayStack:
             'email': email,
             'amount': amount,
         }
+
+        if ref:
+            body['ref'] = ref
 
         response = requests.post(url, headers=self.headers, json=body)
 

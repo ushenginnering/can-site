@@ -19,7 +19,6 @@ class Announcement(models.Model):
 class Gallery(models.Model):
     image       = models.ImageField( upload_to='gallery', )
     title       = models.CharField(max_length=100)
-    body        = models.TextField()
 
     def __str__(self):
         return self.title
@@ -60,6 +59,7 @@ class PublicationPayment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     publication = models.ForeignKey(Publication, on_delete=models.CASCADE)
     payment_date = models.DateTimeField(auto_now_add=True)
+    approved     = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.username} - {self.publication.headline}"
