@@ -3,13 +3,10 @@ var modal = document.getElementById("myModal");
 
 let openImageModal = (img) => {
   var modalImg = document.getElementById("img01");
-  var captionText = document.getElementById("caption");
 
   modal.style.display = "block";
   modalImg.src = img.src;
-  captionText.innerHTML = img.alt;
   var modalImg = document.getElementById("img01");
-  var captionText = document.getElementById("caption");
 };
 
 // // Get the <span> element that closes the modal
