@@ -47,9 +47,8 @@ class RegisterForm(UserCreationForm):
 
     def save(self, commit = True):
         user = super(RegisterForm, self).save(commit=False)
-        user.is_staff = True
-        user.is_superuser = True
         user.email = self.cleaned_data.get('email')
+        user.username = self.cleaned_data.get('email')
         if commit:
             user.save()
         return user
