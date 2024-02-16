@@ -37,7 +37,7 @@
                             <h5 class="card-title">{{announcement.headline}}</h5>
                             <p class="card-text">{{announcement.body}}</p>
                             {% if not request.user.is_authenticated %}
-                                <button class="btn bg-white  text-bolder" style="float: right;">SignUp Now</button>
+                                <a class="btn bg-white  text-bolder" href="/signup" style="float: right;">SignUp Now</a>
                             {% endif %}
                         </div>
                             
@@ -71,7 +71,7 @@
                         <h5 class="card-title">February Camp Meeting</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt tellus vel metus lacinia, vel pretium est tincidunt.</p>
                         
-                    <button class="btn bg-white text-bolder" style="float: right;">Connect</button>
+                    <a class="btn bg-white text-bolder" href="/login" style="float: right;">Connect</a>
                     </div>
                 </div>
             </div>
