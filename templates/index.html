@@ -35,7 +35,9 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">{{announcement.headline}}</h5>
-                            <p class="card-text">{{announcement.body}}</p>
+                            <p class="card-text" id="fullText">{{announcement.body}}</p>
+                            <p id="shortText" style=""></p>
+                            <a href="#" id="seeMoreLink">See More</a>
                             {% if not request.user.is_authenticated %}
                                 <a class="btn bg-white  text-bolder" href="/signup" style="float: right;">SignUp Now</a>
                             {% endif %}
@@ -44,7 +46,33 @@
                     </div>
                 </div>
             {% endfor %}
-            
+            <script>
+                console.log('running')
+                var fullTextElement = document.getElementById('fullText');
+                var shortTextElement = document.getElementById('shortText');
+                var seeMoreLink = document.getElementById('seeMoreLink');
+
+                var fullText = fullTextElement.textContent;
+                var shortText = fullText.substring(0, 370); // Display first 100 characters
+                shortTextElement.textContent = shortText;
+
+                // Initially hide the full text
+                fullTextElement.style.display = 'none';
+
+                seeMoreLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    if (fullTextElement.style.display === 'none') {
+                        fullTextElement.style.display = 'block';
+                        shortTextElement.style.display = 'none';
+                        seeMoreLink.textContent = 'See Less';
+                    } else {
+                        fullTextElement.style.display = 'none';
+                        shortTextElement.style.display = 'block';
+                        seeMoreLink.textContent = 'See More';
+                    }
+                });
+                
+            </script>
     
             <!-- Repeat for other announcements -->
             
@@ -53,7 +81,7 @@
     
     
 
-    <section class="container mt-5">
+    {% comment %} <section class="container mt-5">
         <h2 class="text-center mb-3">Community Member of the Month</h2>
      
         
@@ -76,9 +104,8 @@
                 </div>
             </div>
         </div>
-            <!-- Repeat for other announcements -->
-            
-    </section>
+            <!-- Repeat for other announcements -->    
+    </section> {% endcomment %}
 
     <section class="container mt-5">
         <h2>Follow Us</h2>
