@@ -18,7 +18,7 @@
     </header>
 
     <div class="container">
-        {% if not request.user.is_authenticated %}]
+        {% if not request.user.is_authenticated %}
             <span class="py-3 px-3 rounded rounded-md d-block mx-auto mb-5" style="width: fit-content; opacity: 50%; background: #3b3636;">Login required to purchase/download.</span>
         {% endif %}
         <div class=" row">
