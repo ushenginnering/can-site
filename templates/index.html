@@ -35,9 +35,9 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">{{announcement.headline}}</h5>
-                            <p class="card-text" id="fullText">{{announcement.body}}</p>
-                            <p id="shortText" style=""></p>
-                            <a href="#" id="seeMoreLink">See More</a>
+                            <p class="full-text card-text" style="display: none;">{{announcement.body}}</p>
+                            <p class="short-text" style=""></p>
+                            <a href="#" class="see-more-link">See More</a>
                             {% if not request.user.is_authenticated %}
                                 <a class="btn bg-white  text-bolder" href="/signup" style="float: right;">SignUp Now</a>
                             {% endif %}
@@ -47,31 +47,31 @@
                 </div>
             {% endfor %}
             <script>
-                console.log('running')
-                var fullTextElement = document.getElementById('fullText');
-                var shortTextElement = document.getElementById('shortText');
-                var seeMoreLink = document.getElementById('seeMoreLink');
-
-                var fullText = fullTextElement.textContent;
-                var shortText = fullText.substring(0, 370); // Display first 100 characters
-                shortTextElement.textContent = shortText;
-
-                // Initially hide the full text
-                fullTextElement.style.display = 'none';
-
-                seeMoreLink.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    if (fullTextElement.style.display === 'none') {
-                        fullTextElement.style.display = 'block';
-                        shortTextElement.style.display = 'none';
-                        seeMoreLink.textContent = 'See Less';
-                    } else {
-                        fullTextElement.style.display = 'none';
-                        shortTextElement.style.display = 'block';
-                        seeMoreLink.textContent = 'See More';
-                    }
-                });
+                document.addEventListener("DOMContentLoaded", function() {
+                    var seeMoreLinks = document.querySelectorAll('.see-more-link');
                 
+                    seeMoreLinks.forEach(function(link) {
+                        var fullTextElement = link.parentElement.querySelector('.full-text');
+                        var shortTextElement = link.parentElement.querySelector('.short-text');
+                
+                        var fullText = fullTextElement.textContent;
+                        var shortText = fullText.substring(0, 370); // Display first 100 characters
+                        shortTextElement.textContent = shortText;
+                
+                        link.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            if (fullTextElement.style.display === 'none') {
+                                fullTextElement.style.display = 'block';
+                                shortTextElement.style.display = 'none';
+                                link.textContent = 'See Less';
+                            } else {
+                                fullTextElement.style.display = 'none';
+                                shortTextElement.style.display = 'block';
+                                link.textContent = 'See More';
+                            }
+                        });
+                    });
+                });
             </script>
     
             <!-- Repeat for other announcements -->
