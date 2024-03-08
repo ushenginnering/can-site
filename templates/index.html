@@ -35,7 +35,7 @@
                 <p class="short-text" style=""></p>
                 <a href="#" class="see-more-link">See More</a>
                 {% if announcement.action_url %}
-                  <a href="{{announcement.action_url}}" class="btn btn-white text-bold">{% if announcement.action_text %} {{announcement.action_text}} {% else %} Signup Now {% endif %}</a>
+                  <a href="{{announcement.action_url}}" class="btn btn-secondary text-bold mt-2">{% if announcement.action_text %} {{announcement.action_text}} {% else %} Signup Now {% endif %}</a>
                 {% endif %}
                 {% comment %} {% if not request.user.is_authenticated %}
                   <a class="btn bg-white text-bolder" href="/signup" style="float: right;">SignUp Now</a>
