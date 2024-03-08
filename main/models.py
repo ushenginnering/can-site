@@ -12,6 +12,8 @@ class Announcement(models.Model):
     image       = models.ImageField( upload_to='announcement', )
     headline    = models.CharField(max_length=100)
     body        = models.TextField()
+    action_url  = models.URLField(max_length=300, null=True, blank=True)
+    action_text = models.CharField(max_length=10, null=True, blank=True)
 
     def __str__(self):
         return self.headline
