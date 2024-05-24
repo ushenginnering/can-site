@@ -114,9 +114,13 @@
             <div class="bg-primary-gold-light rounded-lg overflow-hidden">
                 <img src="{{ announcement.image.url }}" alt="Announcement Image" class="w-full h-48 object-cover" width="768"
                     height="200" style="aspect-ratio: 768 / 200; object-fit: cover;" />
-                <div class="p-4">
+                <div class="announcement-card p-4">
                     <h3 class="text-xl font-bold mb-2">"{{announcement.headline}}"</h3>
-                    <p class="text-gray-600 mb-4">{{announcement.body}}</p>
+                    <div class="flex flex-col mb-4">
+                        <p class="fullText text-gray-600">{{announcement.body}}</p>
+                        <p class="shortText text-gray-600"></p>
+                        <a href="#">see more</a>
+                    </div>
                     <button
                         class="inline-flex items-center justify-center whitespace-nowrap text-sm uppercase ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 bg-primary-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         View Details
@@ -124,10 +128,18 @@
                 </div>
             </div>
             {% endfor %}
-            
         </div>
     </div>
 </section>
 
-</div>
+<script src="{% static 'js/collapse.js' %}"></script>
+<script>
+    document.querySelectorAll('.announcement-card').forEach(card=>{
+        Collapsible(
+            card.querySelector('.fullText'),
+            card.querySelector('.shortText'),
+            card.querySelector('a')
+            );
+    })
+</script>
 {% endblock body %}
