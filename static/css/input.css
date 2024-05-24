@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Rubik', sans-serif;
+}
+
+@layer utilities {
+    .bg-hero {
+      @apply bg-cover bg-center;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/hero-background.jpg');
+    }
+    .bg-donation {
+      @apply bg-cover bg-center;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/iStock-857146092.jpg');
+    }
+  }
+
+@keyframes bounce-side {
+  from{
+    transform: translateX(0%);
+  }
+  to{
+    transform: translateX(7px);
+  }
+}
