@@ -2,20 +2,12 @@
 {% load static %}
 
 {% block head %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-<script src="https://kit.fontawesome.com/7dc614ef69.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/static/css/style.css">
-<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+    <script src="https://kit.fontawesome.com/7dc614ef69.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
 <title>Gallery</title>
 {% endblock head %}
 
 {% block body %}
-<div class="bg-dark text-light">
-
-    {% include "components/navbar.html" %}
-
     <!-- Header Section with Hero Image -->
     <header>
         <!-- Navbar included here if needed -->
@@ -52,8 +44,6 @@
         <img class="modal-content" id="img01">
     </div>
 
-    {% include "components/footer.html" %}
-</div>
 
 <script src="{% static 'js/gallery.js' %}"></script>
 
