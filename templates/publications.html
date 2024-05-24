@@ -18,6 +18,9 @@
     </header>
 
     <div class="container">
+        {% if not request.user.is_authenticated %}
+            <span class="py-3 px-3 rounded rounded-md d-block mx-auto mb-5" style="width: fit-content; opacity: 50%; background: #3b3636;">Login required to purchase/download.</span>
+        {% endif %}
         <div class=" row">
             {% for publication in publications %}
             <div class="col-4">
@@ -39,7 +42,10 @@
                                     </form>
                                 {% endif %}
                             {% else %}
-                                <span class="text-danger">Login required to purchase/download.</span>
+                                {% if publication.price <= 0  %}
+                                <a href="{{ publication.file.url }}" class="btn btn-primary" download><i
+                                    class="fas fa-download"></i> Download PDF</a>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
