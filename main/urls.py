@@ -4,7 +4,7 @@ from .views import home, partner_view, signup_view, about_view, gallery_view, gi
 urlpatterns = [
     path('', home, name='home'),
     path('partner/', partner_view, name='partner'),
-    path('about_us/', about_view, name="about_us"),
+    path('about/', about_view, name="about_us"),
     path('gallery/', gallery_view, name="gallery"),
     path('giving/', giving_view, name="giving"),
     path('events/', events_view, name="event"),
