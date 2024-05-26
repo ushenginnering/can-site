@@ -1,184 +1,104 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-  <title>About Us</title>
+<title>About Us</title>
 {% endblock %}
 
 {% block body %}
-    <!-- Header Section with Hero Image -->
-    <header class="jumbotron text-white text-center" style="background-image: url('/static/images/bg1.jpg'); background-size: cover;">
-      <div class="container">
-        <!-- Navbar included here if needed -->
+<!-- Header Section with Hero Image -->
+<header class="bg-about text-white text-center h-56 md:h-96 flex items-center">
+  <div class="container">
+    <h1 class="text-4xl font-bold md:font-normal md:text-6xl">About Us</h1>
+    <p class="capitalize text-center text-lg mt-1">Learn more about Church Arise Network and the problems we solve.</p>
+  </div>
+</header>
 
-        <h1 class="display-4 font-weight-bold">About Us</h1>
-        <p class="lead font-weight-bold">Learn more about Church Arise Network and the problems we solve.</p>
-      </div>
-    </header>
-    <div style="margin-top: 100px;"></div>
+<section class="flex flex-col sm:flex-row justify-center gap-20 lg:gap-32 px-2 md:px-8 pt-20 md:pt-28 text-white">
+  <div class="bg-primary-gold w-full max-w-[450px] px-6 md:px-8 py-20 rounded-lg mx-auto">
+    <h2 class="text-3xl md:text-4xl mb-2">Who are we?</h2>
+    <p class="w-full md:w-10/12 md:text-lg">
+      The church, The bride of christ has been separated unto Kingship and Priesthood.
+      <br />
+      He has sent us to make known unto his bride, his unchanging desire that she walks in Fellowship with him, in
+      Partnership - showing forth his glory while remaining loyal and submissive to his Government.
+    </p>
+  </div>
+  <div class="bg-primary-blue w-full max-w-[450px] px-6 md:px-8 py-20 rounded-lg mx-auto">
+    <h2 class="text-3xl md:text-4xl mb-2">Our Message</h2>
+    <p class="w-full md:w-10/12 md:text-lg">
+      The more we know Christ and the Power that raised him up from the dead, <br /> that’s the more we are raised and
+      empowered to live a Life for Generations.
+    </p>
+  </div>
+</section>
 
-    <!-- Mission Section -->
-    <section class="container my-5">
-      <h2 class="text-center">Who are we?</h2>
-      <p class="text-center">
-        The church, The bride of christ has been separated unto Kingship and Priesthood.
-        <br />
-        He has sent us to make known unto his bride, his unchanging desire that she walks in Fellowship with him, in Partnership - showing forth his glory while remaining loyal and submissive to his Government.
-      </p>
-    </section>
-
-    <div style="margin-top: 100px;"></div>
-    <!-- Vision Section -->
-    <section class="container my-5">
-      <h2 class="text-center">Our Message</h2>
-      <p class="text-center">
-        The more we know Christ and the Power that raised him up from the dead, <br /> that’s the more we are raised and empowered to live a Life for Generations.
-      </p>
-    </section>
-
-    <div style="margin-top: 100px;"></div>
-    <!-- Big 7 Concept Section -->
-    <section class="container my-5">
-      <h2 class="text-center">Our Goals</h2>
-      <p class="text-justify"></p>
-
-      <!-- Accordion for Big 7 Concepts -->
-      <div id="accordion" class="mt-4 text-dark">
-        <!-- Love -->
-        <div class="card">
-          <div class="card-header" id="loveHeading">
-            <h5 class="mb-0"><button class="btn" data-toggle="collapse" data-target="#loveCollapse" aria-expanded="true" aria-controls="loveCollapse"><i class="fas fa-caret-down"></i> Goal One</button></h5>
-          </div>
-
-          <div id="loveCollapse" class="collapse" aria-labelledby="loveHeading" data-parent="#accordion">
-            <div class="card-body">A Family of Productive Positive Creative and Christ-Like young people</div>
-          </div>
-        </div>
-
-        <!-- Faith -->
-        <div class="card">
-          <div class="card-header" id="faithHeading">
-            <h5 class="mb-0"><button class="btn" data-toggle="collapse" data-target="#faithCollapse" aria-expanded="true" aria-controls="faithCollapse"><i class="fas fa-caret-down"></i> Goal Two</button></h5>
-          </div>
-
-          <div id="faithCollapse" class="collapse" aria-labelledby="faithHeading" data-parent="#accordion">
-            <div class="card-body">A Platform for young people to Think, Act and Grow Professionally.</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header" id="fno3value">
-            <h5 class="mb-0"><button class="btn" data-toggle="collapse" data-target="#no3value" aria-expanded="true" aria-controls="faithCollapse"><i class="fas fa-caret-down"></i> Goal Three</button></h5>
-          </div>
-
-          <div id="no3value" class="collapse" aria-labelledby="faithHeading" data-parent="#accordion">
-            <div class="card-body">
-                Young People inspired to go beyoung themselves to serve others.
-            </div>
-          </div>
-        </div>
-
-        <!-- Integrity -->
-        <!-- Add similar card structure for other concepts -->
-      </div>
-    </section>
-
-    <div style="margin-top: 100px;"></div>
-    <!-- Values Section with Bootstrap Grid -->
-    <section class="container my-5">
-      <h2 class="text-center">Our Mission</h2>
-      <p class="text-center">Why are we here</p>
-      <div class="row">
-        <div class="col-md-6">
-          <ul class="list-group">
-            <li class="list-group-item bg-dark">To Raise an Apostolic Generation through an Apostolic Educational System.</li>
-            <li class="list-group-item bg-dark">To Reach the ends of the Earth with the Gospel of the Kingdom of God.</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <ul class="list-group">
-            <li class="list-group-item bg-dark">To Strategically Invade systems by providing real time, undeniable Value to society</li>
-            <li class="list-group-item bg-dark">To promote and reward the good works of others [Awards and Magazine etc]</li>
-          </ul>
+<section class="bg-white py-8">
+  <div class="container mx-auto px-4 py-10 md:py-16">
+    <h2
+      class="text-center text-3xl md:text-5xl text-blue-900 text-transparent bg-gradient-to-r bg-clip-text from-primary-blue to-blue-600  font-bold w-fit mx-auto">
+      Our Goals
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 md:mt-14">
+      <!-- Announcement Card 1 -->
+      <div class="bg-primary-gold-light rounded-lg ">
+        <div class="announcement-card p-8 pt-10 relative">
+          <h3 class="goal-badge">1</h3>
+          <p class="fullText text-gray-600 text-lg md:text-xl font-semibold">A Family of Productive Positive Creative
+            and Christ-Like young people.</p>
         </div>
       </div>
-    </section>
 
-    <div style="margin-top: 100px;"></div>
-
-    <!-- Our Team Section -->
-    {% comment %} <section class="container my-5">
-      <h2 class="text-center">Meet Our Team</h2>
-      <p class="text-justify">Get to know the dedicated individuals who form the backbone of Church Arise Network. Each member of our team plays a crucial role in fulfilling our mission and vision.</p>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mb-4 shadow-sm">
-            <div class="team-member">
-              <div class="row">
-                <div class="col-4">
-                  <img src="https://placekitten.com/120/120" class="rounded-circle" alt="John Doe Image" />
-                </div>
-                <div class="col-8">
-                  <div class="team-info mt-4">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">Executive Director</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="bg-primary-gold-light rounded-lg ">
+        <div class="announcement-card p-8 pt-10 relative">
+          <h3 class="goal-badge">2</h3>
+          <p class="fullText text-gray-600 text-lg md:text-xl font-semibold">A Platform for young people to Think, Act
+            and Grow Professionally.</p>
         </div>
-        <div class="col-md-6">
-          <div class="mb-4 shadow-sm">
-            <div class="team-member">
-              <div class="row">
-                <div class="col-4">
-                  <img src="https://placekitten.com/120/120" class="rounded-circle" alt="John Doe Image" />
-                </div>
-                <div class="col-8">
-                  <div class="team-info mt-4">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">Executive Director</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-4 shadow-sm">
-            <div class="team-member">
-              <div class="row">
-                <div class="col-4">
-                  <img src="https://placekitten.com/120/120" class="rounded-circle" alt="John Doe Image" />
-                </div>
-                <div class="col-8">
-                  <div class="team-info mt-4">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">Executive Director</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-4 shadow-sm">
-            <div class="team-member">
-              <div class="row">
-                <div class="col-4">
-                  <img src="https://placekitten.com/120/120" class="rounded-circle" alt="John Doe Image" />
-                </div>
-                <div class="col-8">
-                  <div class="team-info mt-4">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">Executive Director</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Add more team members as needed -->
       </div>
-    </section> {% endcomment %}
+
+      <div class="bg-primary-gold-light rounded-lg ">
+        <div class="announcement-card p-8 pt-10 relative">
+          <h3 class="goal-badge">3</h3>
+          <p class="fullText text-gray-600 text-lg md:text-xl font-semibold">Young People inspired to go beyoung
+            themselves to serve others.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-8">
+  <h2 class="text-center text-3xl md:text-5xl font-bold">
+    <span class="text-transparent bg-gradient-to-r bg-clip-text from-primary-blue to-blue-600">Our</span>
+    <span class="text-transparent bg-gradient-to-r bg-clip-text from-primary-gold to-yellow-500">Mission</span>
+  </h2>
+  <div class="container mx-auto px-4 py-10 md:py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 border-l-4 border-l-blue-500">
+      <h4 class="text-lg md:text-xl font-semibold mb-4 text-gray-900 dark:text-gray-50">
+        To Raise an Apostolic Generation through an Apostolic Educational System.
+      </h4>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 border-l-4 border-l-green-500">
+      <h4 class="text-lg md:text-xl font-semibold mb-4 text-gray-900 dark:text-gray-50">
+        To Reach the ends of the Earth with the Gospel of the Kingdom of God.
+      </h4>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 border-l-4 border-l-yellow-500">
+      <h4 class="text-lg md:text-xl font-semibold mb-4 text-gray-900 dark:text-gray-50">
+        To Strategically Invade systems by providing real time, undeniable Value to society
+      </h4>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 border-l-4 border-l-red-500">
+      <h4 class="text-lg md:text-xl font-semibold mb-4 text-gray-900 dark:text-gray-50">
+        To promote and reward the good works of others [Awards and Magazine etc]
+      </h4>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800 border-l-4 border-l-purple-500">
+      <h4 class="text-lg md:text-xl font-semibold mb-4 text-gray-900 dark:text-gray-50">
+        To Speak the stand of Christ Authoritatively.
+      </h4>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

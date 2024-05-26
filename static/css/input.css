@@ -10,11 +10,20 @@
 @layer utilities {
     .bg-hero {
       @apply bg-cover bg-center;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/hero-background.jpg');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/sky-scraper.jpg');
     }
     .bg-donation {
       @apply bg-cover bg-center;
       background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/iStock-857146092.jpg');
+    }
+
+    .bg-about{
+      @apply bg-cover bg-top;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/happy_employees.jpg');
+    }
+
+    .goal-badge{
+      @apply text-2xl font-bold mb-2 absolute -top-2 -left-2 w-10 h-10 bg-primary-blue rounded-full text-white inline-flex justify-center items-center border-2 border-white;
     }
   }
 
