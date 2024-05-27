@@ -1,31 +1,49 @@
 {% extends "layout.html" %}
+{% load static %}
 
 {% block head %}
     <title>Giving</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock head %}
 
 {% block body %}
 
-    <div class="mx-auto" style="max-width: 650px;" >
-    <header class="text-center">
-       
-        <h1 class="mt-5"><i class="fas fa-fire"></i> Giving</h1>
-        <p>Thank you for supporting Church Arise Network. Your generosity helps us fulfill our mission.</p>
-    </header>
+<header class="text-center py-4 pt-16">
+    <h1 class="text-4xl md:font-normal md:text-6xl text-primary-blue">
+        Donate
+    </h1>
+    <p
+        class="max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed capitalize text-center text-lg mt-1 mx-auto">
+        Thank you for supporting Church Arise Network. Your generosity helps us fulfill our mission.
+    </p>
+</header>
 
-    <div style="margin-top: 50px;"></div>
-    <section class="container " >
+<!--
+// v0 by Vercel.
+// https://v0.dev/t/HQK3q3v8eJk
+-->
 
-        <form action='{% url "giving" %}' method="post"> 
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="amount">Amount:</label>
-                <input type="number" class="form-control" id="amount" name="amount" min="1" required>
+<section class="w-full max-w-md mx-auto py-12 md:py-16 px-4">
+    <form action='{% url "giving" %}' method="post" class="space-y-4">
+        {% csrf_token %}
+        <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-2">
+                <label
+                    class="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="amount">
+                    Amount
+                </label>
+                <input
+                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    id="amount" placeholder="Enter amount" name="amount" min="0" step="0.01" type="number" required />
             </div>
-
-            <div class="form-group">
-                <label for="currency">Currency:</label>
-                <select class="form-control" id="currency" name="currency" required>
+            <div class="">
+                <label
+                    class="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    for="currency">
+                    Currency
+                </label>
+                <select class="" id="currency" name="currency" required>
                     <option value="NGN">NGN</option>
                     <option value="USD">USD</option>
                     <option value="GHS">GHS</option>
@@ -34,15 +52,23 @@
                     <!-- Add more options for different currencies -->
                 </select>
             </div>
+        </div>
+        <div class="space-y-2">
+            <label class="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="message">
+                Message (optional)
+            </label>
+            <textarea
+                class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]"
+                id="message" name="message" placeholder="Enter a message for us"></textarea>
+        </div>
+        <button
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-gradient-to-r from-primary-gold to-yellow-600 hover:bg-gradient-to-br text-white hover:bg-primary/90 h-10 px-4 py-2 w-full"
+            type="submit">
+            Donate
+        </button>
+    </form>
+</section>
 
-            <div class="form-group">
-                <label for="message">Leave a message (optional):</label>
-                <textarea class="form-control" id="message" name="message" rows="4"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary"><i class="fas fa-donate"></i> Donate</button>
-        </form>
-    </section>
-    </div>
 
 {% endblock body %}
