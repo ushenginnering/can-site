@@ -7,6 +7,10 @@
     font-family: 'Rubik', sans-serif;
 }
 
+label{
+  @apply text-yellow-400;
+}
+
 @layer utilities {
     .bg-hero {
       @apply bg-cover bg-center;
@@ -24,6 +28,10 @@
 
     .goal-badge{
       @apply text-2xl font-bold mb-2 absolute -top-2 -left-2 w-10 h-10 bg-primary-blue rounded-full text-white inline-flex justify-center items-center border-2 border-white;
+    }
+    
+    .btn-yellow-gradient{
+      @apply  bg-gradient-to-r from-primary-gold to-yellow-600 hover:bg-gradient-to-br text-white rounded-md h-10 px-4 py-2;
     }
   }
 

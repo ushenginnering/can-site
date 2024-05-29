@@ -1,29 +1,23 @@
 // Get the modal
-var modal = document.getElementById("myModal");
+let modal = document.getElementById("myModal");
+let isModalOpen = false;
 
 let openImageModal = (img) => {
-  var modalImg = document.getElementById("img01");
+  let modalImg = document.getElementById("img01");
 
-  modal.style.display = "block";
+  modal.style.display = "flex";
   modalImg.src = img.src;
-  var modalImg = document.getElementById("img01");
+  isModalOpen = true;
 };
-
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function () {
-//   modal.style.display = "none";
-// };
 
 function hideModal() {
   modal.style.display = "none";
+  isModalOpen = false;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  var modal = document.getElementById("myModal");
-  var modalImg = document.getElementById("img01");
+  let modal = document.getElementById("myModal");
+  let modalImg = document.getElementById("img01");
 
   modal.addEventListener("click", function (event) {
     // Check if the click target is the modal itself (not the image)
@@ -31,6 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
       hideModal();
     }
   });
+
+  document.addEventListener('keydown', (event)=>{
+    if (event.key == 'Escape' && isModalOpen) {
+      hideModal();
+    }
+    console.log(event);
+  })
 
   // Prevent the modal from closing when the image is clicked
   modalImg.addEventListener("click", function (event) {

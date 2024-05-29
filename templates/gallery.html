@@ -8,16 +8,17 @@
 {% endblock head %}
 
 {% block body %}
-    <!-- Header Section with Hero Image -->
-    <header>
-        <!-- Navbar included here if needed -->
 
-        <h1 class="display-4 font-weight-bold" style="margin-top: 20px;">Gallery</h1>
-        <p>An image worth a thousand words</p>
-
+    <header class="text-center py-4 pt-16">
+        <h1 class="text-4xl md:font-normal md:text-6xl text-primary-blue">
+            Gallery
+        </h1>
+        <p class="max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed capitalize text-center text-lg mt-1 mx-auto">
+            An image worth a thousand words.
+        </p>
     </header>
 
-    <section class="container pb-4 my-5">
+    <section class="container pb-4 my-5 mx-auto mb-12">
         <div class=" rounded-5">
 
             <section class="p-4 text-center w-100">
@@ -26,7 +27,7 @@
                     {% for image in  gallery %}
                         <div class="mb-lg-0">
                             <img src="{{ image.image.url }}"
-                                class="w-100 h-100 shadow-md " onclick="openImageModal(this)" alt="{{ image.title }}">
+                                class="w-full h-full shadow-md cursor-zoom-in rounded-md hover:shadow-md" onclick="openImageModal(this)" alt="{{ image.title }}">
                         </div>
                     {% endfor %}
                 </div>
@@ -38,8 +39,7 @@
     </section>
 
     <!-- The Modal -->
-    <div id="myModal" class="modal">
-
+    <div id="myModal" class="modal flex justify-center items-center">
         <!-- Modal Content (The Image) -->
         <img class="modal-content" id="img01">
     </div>

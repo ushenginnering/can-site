@@ -21,8 +21,8 @@ class LoginForm(forms.Form):
     # username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(widget=forms.PasswordInput, min_length=6)
 
-    email.widget.attrs.update({'class' : 'form-control', 'placeholder': 'email adress'})
-    password.widget.attrs.update({'class' : 'form-control','placeholder': 'password'})
+    email.widget.attrs.update({'class' : 'focus-visible:ring-offset-2', 'placeholder': 'email adress'})
+    password.widget.attrs.update({'class' : 'focus-visible:ring-offset-2','placeholder': 'password'})
 
 
 class RegisterForm(UserCreationForm):
@@ -42,7 +42,7 @@ class RegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
+            visible.field.widget.attrs['class'] = 'focus-visible:ring-offset-2'
 
 
     def save(self, commit = True):
