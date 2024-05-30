@@ -5,62 +5,58 @@
 {% endblock head %}
 
 {% block body %}
-<div class="bg-dark text-light " style="height: 100%;">
-    {% include "components/navbar.html" %}
-
-    <header>
-
-
-        <h1 class="text-center">Partner Portal</h1>
-
-        <div style="margin-top: 50px; " class="text-center"></div>
+    <header class="text-center py-4 pt-16">
+        <h1 class="text-4xl md:font-normal md:text-6xl text-primary-blue">
+            Partner Portal
+        </h1>
+        <p class="max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed capitalize text-center text-lg mt-1 mx-auto">
+            Submit Unit meeting/welfare reports
+        </p>
     </header>
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Unit Meeting Report</h2>
-                    <form id="unitMeetingForm" action='{% url "meeting" %}' method="post">
+    {% with input_classes="flex w-full h-10 px-3 py-2 text-sm border rounded-md border-input bg-background ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" label_classes="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" %}
+    <section class="w-full max-w-screen-md px-4 py-12 mx-auto md:py-16">
+        <div class="grid sm:grid-cols-2 gap-4 lg:gap-8 gap-y-8">
+                <div class="">
+                    <h2 class="text-xl font-semibold">Unit Meeting Report</h2>
+                    <form id="unitMeetingForm" class="space-y-4" action='{% url "meeting" %}' method="post">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label for="meetingDate">Meeting Date:</label>
-                            <input type="date" id="meetingDate" name="meetingDate" class="form-control" required>
+                        <div class="space-y-1">
+                            <label for="meetingDate" class="{{label_classes}}">Meeting Date:</label>
+                            <input type="date" id="meetingDate" name="meetingDate" class="{{input_classes}}" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="meetingDetails">Meeting Details:</label>
-                            <textarea id="meetingDetails" name="meetingDetails" rows="4" class="form-control"
+                        <div class="space-y-1">
+                            <label for="meetingDetails" class="{{label_classes}}">Meeting Details:</label>
+                            <textarea id="meetingDetails" name="meetingDetails" rows="4" class="{{input_classes}} min-h-[100px]"
                                 required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Submit Report</button>
+                        <button type="submit" class="btn-yellow-gradient w-full">Submit Report</button>
                     </form>
                 </div>
 
-                <div class="col-md-6">
-                    <h2>Welfare Form</h2>
-                    <form id="welfareForm" action='{% url "welfare" %}' method="post">
+                <div class="">
+                    <h2 class="text-xl font-semibold">Welfare Form</h2>
+                    <form id="welfareForm" class="space-y-4" action='{% url "welfare" %}' method="post">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label for="memberName">Member Name:</label>
-                            <input type="text" id="memberName" name="memberName" class="form-control" required>
+                        <div class="space-y-1">
+                            <label for="memberName" class="{{label_classes}}">Member Name:</label>
+                            <input type="text" id="memberName" name="memberName" class="{{input_classes}}" required>
                         </div>
 
-                        <div class="form-group">
-                            <label for="welfareDetails">Welfare Details:</label>
-                            <textarea id="welfareDetails" name="welfareDetails" rows="4" class="form-control"
+                        <div class="space-y-1">
+                            <label for="welfareDetails" class="{{label_classes}}">Welfare Details:</label>
+                            <textarea id="welfareDetails" name="welfareDetails" rows="4" class="{{input_classes}} min-h-[100px]"
                                 required></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-warning">Submit Welfare Request</button>
+                        <button type="submit" class="btn-yellow-gradient w-full">Submit Welfare Request</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    {% endwith %}
 
-
-    {% include "components/footer.html" %}
-</div>
 {% endblock body %}

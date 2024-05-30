@@ -55,8 +55,8 @@ def login_user(request):
         form = LoginForm(request.POST)
 
         if form.is_valid():
-            print(form.cleaned_data)
             username = User.objects.filter(email = form.cleaned_data.get('email')).first()
+            print(username)
             # the authenticate function returns the user object if the user is found else it returns none
             user = authenticate(username=username, password=form.cleaned_data.get('password'))
             if user:
@@ -65,7 +65,6 @@ def login_user(request):
                 return redirect('/')
             else:
                 messages.error(request, 'Invalid credentials')
-                # form.add_error('user not found')
                 return redirect('/login')
 
         # if form is not valid render the template again with pre populated data
