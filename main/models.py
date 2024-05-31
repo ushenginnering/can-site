@@ -64,7 +64,7 @@ class PublicationPayment(models.Model):
     approved     = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.user.username} - {self.publication.headline}"
+        return f"{self.user.username} paid for- {self.publication.headline}"
     
 
 class Event(models.Model):
