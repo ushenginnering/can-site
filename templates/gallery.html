@@ -27,7 +27,7 @@
                     {% for image in  gallery %}
                         <div class="mb-lg-0">
                             <img src="{{ image.image.url }}"
-                                class="w-full h-full shadow-md cursor-zoom-in rounded-md hover:shadow-md" onclick="openImageModal(this)" alt="{{ image.title }}">
+                                class="w-full h-full shadow-md cursor-zoom-in rounded-md hover:shadow-md border-primary-blue border-2" onclick="openImageModal(this)" alt="{{ image.title }}">
                         </div>
                     {% endfor %}
                 </div>

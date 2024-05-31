@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponse
 from django.contrib import messages
 
 # modules needed for user authentication
@@ -62,7 +62,7 @@ def login_user(request):
             if user:
                 login(request, user)
                 messages.success(request, f'successfully logged in as {user.username}')
-                return redirect('/')
+                return redirect('/publications')
             else:
                 messages.error(request, 'Invalid credentials')
                 return redirect('/login')

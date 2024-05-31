@@ -37,14 +37,14 @@
                     {% with btn_classes='inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary-blue hover:bg-blue-70 text-white hover:bg-primary-blue/90 h-10 px-4 py-2 w-full' %}
                     {% if request.user.is_authenticated %}
                         {% if publication.id in publication_payments or publication.price <= 0 %} 
-                        <a href="{{ publication.file.url }}" class="{{btn_classes}}" download><i
+                        <a href="{{ publication.file.url }}" class="{{btn_classes}} gap-2 items-end" download><i
                             class="fas fa-download"></i> Download PDF</a>
                         {% else %}
                         <form action="{% url 'initiate_payment' publication_id=publication.id %}" method='post'
                             data-publication-id="{{publication.id}}">
                             {% csrf_token %}
                             <button href="" class="{{btn_classes}}" download>
-                                <i class="fas fa-download"></i>Purchased 
+                                </i>Purchased 
                             </button>
                         </form>
                         {% endif %}

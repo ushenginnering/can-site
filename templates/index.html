@@ -20,19 +20,19 @@
             <dotlottie-player class="w-[300px] md:w-[400px] mx-auto md:mx-0"
                 src="https://lottie.host/ea52c102-cabe-4bd1-9c29-3c053c674f77/42BjNShmQP.json" background="transparent"
                 speed="1" loop autoplay></dotlottie-player>
-            <!-- <dotlottie-player class="h-full" src="https://lottie.host/1f636ac9-080c-42db-919f-c05530085ddc/F3FrBxCxc6.json" background="transparent" speed="1" loop autoplay></dotlottie-player> -->
         </div>
     </div>
 </header>
 
+{% if latest_event %}
 <section class="bg-primary-gold-light">
     <div class="container justify-between max-w-6xl px-2 py-6 mx-auto md:flex">
         <div class="mx-auto md:mx-0">
             <span class="block text-center md:text-start">UPCOMING EVENT</span>
-            <p class="text-xl text-center md:text-start">"The Law Demands, but Grace Supplies" - Paster J.P.</p>
+            <p class="text-xl text-center md:text-start">"{{latest_event.title}}"</p>
         </div>
         <div class="flex justify-center mt-3 md:block">
-            <button type="button"
+            <a href="/events" type="button"
                 class="flex items-center text-white bg-gradient-to-r from-primary-gold to-yellow-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm md:text-base px-5 py-2.5 md:py-3 text-center me-2 mb-2 md:mb-0">
                 view details
                 <svg class="w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -40,22 +40,24 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M1 5h12m0 0L9 1m4 4L9 9" />
                 </svg>
-            </button>
+            </a>
         </div>
     </div>
 </section>
+{% endif %}
 
 <section class="">
     <div class="container max-w-6xl px-4 py-10 mx-auto md:py-16">
-        <h2 class="text-3xl font-bold text-center text-blue-900 md:text-5xl">Who we
+        <h2 class="text-3xl font-bold text-center text-blue-900 md:text-5xl">
+            We live our 
             <span
-                class="inline-block p-1 text-transparent bg-gradient-to-r bg-clip-text from-primary-gold to-yellow-600">
-                CAN
+            class="inline-block p-1 text-transparent bg-gradient-to-r bg-clip-text from-primary-gold to-yellow-600">
+            Lives
             </span>
-            family are ?
+            for Generations
         </h2>
         <div
-            class="grid justify-center mx-auto mt-10 md:grid-cols-2 justify-items-center gap-14 md:gap-20 md:mt-14">
+            class="grid justify-center mx-auto mt-10 md:grid-cols-2 justify-items-center gap-14 md:gap-20 md:mt-16">
             <div class="flex flex-col gap-2 max-w-96 w-[90%]">
                 <div >
                     <img class="mx-auto" src="/static/flaticons/big-family (1).png" width="100px" alt="">

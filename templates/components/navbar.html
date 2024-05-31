@@ -40,6 +40,10 @@
                         class="block py-2 px-3 uppercase rounded {% if request.path == '/gallery/' %} {{current_page_classes}} {% else %} {{non_current_page_classes}} {% endif %}">GALLERY</a>
                 </li>
                 <li>
+                    <a href="/publications"
+                        class="block py-2 px-3 uppercase rounded {% if request.path == '/publications/' %} {{current_page_classes}} {% else %} {{non_current_page_classes}} {% endif %}">PUBLICATIONS</a>
+                </li>
+                <li>
                     {% if request.user.is_authenticated %}
                     <a href="/logout"
                     class="block py-2 px-3 uppercase rounded {% if request.path == '/logout' %} {{current_page_classes}} {% else %} {{non_current_page_classes}} {% endif %}">LOGOUT</a>

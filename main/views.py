@@ -13,6 +13,7 @@ import requests
 
 def home(requests):
     context = {
+        'latest_event': Event.objects.first(),
         'announcements' : list(Announcement.objects.all()),
     }
     return render(requests, 'index.html', context)
