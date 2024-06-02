@@ -54,7 +54,7 @@
             class="inline-block p-1 text-transparent bg-gradient-to-r bg-clip-text from-primary-gold to-yellow-600">
             Lives
             </span>
-            for Generations
+            for Generations!
         </h2>
         <div
             class="grid justify-center mx-auto mt-10 md:grid-cols-2 justify-items-center gap-14 md:gap-20 md:mt-16">
@@ -132,10 +132,10 @@
                         <p class="text-gray-600 shortText"></p>
                         <a href="#">see more</a>
                     </div>
-                    <!-- <button
+                    <a href="{{announcement.action_url}}"
                         class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-bold text-white uppercase transition-colors rounded whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary-blue hover:bg-blue-700">
-                        View Details
-                    </button> -->
+                        {{announcement.action_text}}
+                    </a>
                 </div>
             </div>
             {% endfor %}

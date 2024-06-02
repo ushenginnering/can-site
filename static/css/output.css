@@ -1375,11 +1375,6 @@ input[type="range"]::-ms-fill-lower{
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
-.border-primary-gold{
-  --tw-border-opacity: 1;
-  border-color: rgb(244 180 73 / var(--tw-border-opacity));
-}
-
 .border-primary-blue{
   --tw-border-opacity: 1;
   border-color: rgb(70 155 216 / var(--tw-border-opacity));
@@ -1477,6 +1472,10 @@ input[type="range"]::-ms-fill-lower{
      object-fit: cover;
 }
 
+.p-1{
+  padding: 0.25rem;
+}
+
 .p-2{
   padding: 0.5rem;
 }
@@ -1491,10 +1490,6 @@ input[type="range"]::-ms-fill-lower{
 
 .p-8{
   padding: 2rem;
-}
-
-.p-1{
-  padding: 0.25rem;
 }
 
 .px-10{
@@ -2017,12 +2012,12 @@ input[type="range"]::-ms-fill-lower{
     margin-top: 3.5rem;
   }
 
-  .md\:mt-4{
-    margin-top: 1rem;
-  }
-
   .md\:mt-16{
     margin-top: 4rem;
+  }
+
+  .md\:mt-4{
+    margin-top: 1rem;
   }
 
   .md\:block{
