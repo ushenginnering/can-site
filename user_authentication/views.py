@@ -62,7 +62,7 @@ def login_user(request):
             if user:
                 login(request, user)
                 messages.success(request, f'successfully logged in as {user.username}')
-                return redirect('/publications')
+                return redirect('/partner/')
             else:
                 messages.error(request, 'Invalid credentials')
                 return redirect('/login')
