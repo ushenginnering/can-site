@@ -1,13 +1,12 @@
 from django.urls import path
-from .views import home, partner_view, signup_view, about_view, gallery_view, giving_view, events_view, verify_giving_callback, meeting_view, welfare_view
-
+from . import views
 urlpatterns = [
-    path('', home, name='home'),
-    path('partner/', partner_view, name='partner'),
-    path('about/', about_view, name="about_us"),
-    path('gallery/', gallery_view, name="gallery"),
-    path('giving/', giving_view, name="giving"),
-    path('events/', events_view, name="event"),
-    path('meeting', meeting_view, name='meeting'),
-    path('welfare', welfare_view, name='welfare'),
+    path('', views.home, name='home'),
+    path('partner/', views.partner_view, name='partner'),
+    path('about/', views.about_view, name="about_us"),
+    path('gallery/', views.gallery_view, name="gallery"),
+    path('giving/', views.giving_view, name="giving"),
+    path('events/', views.events_view, name="event"),
+    path('meeting', views.meeting_view, name='meeting'),
+    path('welfare', views.welfare_view, name='welfare'),
 ]
