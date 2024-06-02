@@ -1,12 +1,8 @@
-import django
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare, Publication, Event
 from publication import transaction_type
-
-from .forms import AboutForm
+from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare, Publication, Event
 from .Paystack import PayStack
-import requests
 
 # Create your views here.
 
