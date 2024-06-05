@@ -22,7 +22,7 @@ def publication_view(requests):
        publication_payments = PublicationPayment.objects.filter(user = requests.user, approved=True).values_list('publication_id', flat=True)
 
     context = {
-        'publications': Publication.objects.all(),
+        'publications': Publication.objects.order_by('-uploadedAt').all(),
         'publication_payments': publication_payments,
     }
     return render(requests, 'publications.html', context)
