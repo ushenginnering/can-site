@@ -1454,10 +1454,6 @@ input[type="range"]::-ms-fill-lower{
   --tw-gradient-to: #1C64F2 var(--tw-gradient-to-position);
 }
 
-.to-yellow-500{
-  --tw-gradient-to: #C27803 var(--tw-gradient-to-position);
-}
-
 .to-yellow-600{
   --tw-gradient-to: #9F580A var(--tw-gradient-to-position);
 }
@@ -1490,10 +1486,6 @@ input[type="range"]::-ms-fill-lower{
 
 .p-8{
   padding: 2rem;
-}
-
-.p-5{
-  padding: 1.25rem;
 }
 
 .px-10{
