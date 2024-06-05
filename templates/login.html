@@ -1,7 +1,11 @@
-{% extends "layout.html" %} {% block head %}
+{% extends "layout.html" %} 
+
+{% block head %}
 <link rel="stylesheet" href="/static/css/style.css" />
 <title>Login</title>
-{% endblock head %} {% block body %}
+{% endblock head %} 
+
+{% block body %}
 <div class="container mx-auto mt-5">
     <!-- Header -->
     <!-- <header class="text-center">
@@ -25,7 +29,8 @@
         <button type="submit" class="w-full btn-yellow-gradient" id="loginBtn">
             <i class="fas fa-sign-in-alt"></i> Login
         </button>
-        <p class="mt-8">Don't have an account? <a class="text-yellow-400 hover:underline" href="/signup">Signup now</a></p>
+        <p class="mt-8">Don't have an account? <a class="text-yellow-400 hover:underline" href="{% url "register" %}">Signup now</a></p>
+        <p class="mt-2">Forgot password? <a class="text-yellow-400 hover:underline" href="{% url "password_reset" %}">Reset now</a></p>
     </form>
 
     <style>
