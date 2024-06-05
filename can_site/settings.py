@@ -137,9 +137,10 @@ PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
 #DJANGO email backend
 # Use the default EmailBackend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'churcharisenetwork.com.ng'
+EMAIL_HOST = 'mail.churcharisenetwork.com.ng'
 EMAIL_HOST_USER = 'automate@churcharisenetwork.com.ng'
-EMAIL_HOST_PASSWORD = 'hg92SNYLCuZnE8t'
-EMAIL_PORT = 465 # or your SMTP server port
-EMAIL_USE_SSL = True
-EMAIL_USE_TLS = False
+EMAIL_HOST_PASSWORD = '(pVp-LMNnGqv'
+EMAIL_PORT = 587 # or your SMTP server port
+# EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
