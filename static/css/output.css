@@ -1502,6 +1502,10 @@ input[type="range"]::-ms-fill-lower{
   padding: 2rem;
 }
 
+.p-5{
+  padding: 1.25rem;
+}
+
 .px-10{
   padding-left: 2.5rem;
   padding-right: 2.5rem;

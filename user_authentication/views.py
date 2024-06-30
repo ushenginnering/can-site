@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+import os
+import subprocess
+from django.shortcuts import render, redirect, resolve_url
 from django.http import HttpResponse
 from django.contrib import messages
 
@@ -15,6 +17,7 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
+from django.contrib.auth.views import PasswordResetView
 
 from django.conf import settings
 
@@ -115,33 +118,42 @@ def logout_user(request):
         return redirect('/')
         
 
+class CustomPasswordResetView(PasswordResetView):
+    def form_valid(self, form):
+        user_email = form.cleaned_data['email']
 
-def password_reset_request(request):
-    if request.method == "POST":
-        password_reset_form = PasswordResetForm(request.POST)
-        if password_reset_form.is_valid():
-            data = password_reset_form.cleaned_data['email']
-            associated_users = User.objects.filter(Q(email=data))
-            if associated_users.exists():
-                for user in associated_users:
-                    subject = "Password Reset Requested"
-                    email_template_name = "password/password_reset_email.txt"
-                    email_content = {
-                    "email":user.email,
-                    'domain': settings.DOMAIN,
-                    'site_name': settings.SITE_NAME,
-                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-                    "user": user,
-                    'token': default_token_generator.make_token(user),
-                    'protocol': settings.PROTOCOL,
-                    }
-                    email = render_to_string(email_template_name, email_content)
-                    try:
-                        send_mail(subject, email, 'admin@example.com' , [user.email], fail_silently=False)
-                    except BadHeaderError:
-                        return HttpResponse('Invalid header found.')
-                    return redirect ("/password_reset/done/")
-            else:
-                messages.error(request, 'email not found in our database')
-    password_reset_form = PasswordResetForm()
-    return render(request=request, template_name="password/password_reset.html", context={"password_reset_form":password_reset_form})
+        associated_user = User.objects.filter(Q(email=user_email))
+        if not associated_user.exists():
+            messages.error(self.request, 'Email not found. please create an acount')
+            return redirect(resolve_url('login'))
+        
+        user = associated_user.first()
+        context = {
+            'email': user_email,
+            'domain': self.request.META['HTTP_HOST'],
+            'site_name': settings.SITE_NAME,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'user': user,
+            'token': default_token_generator.make_token(user),
+            'protocol': 'https' if self.request.is_secure() else 'http',
+        }
+        subject = 'Password Reset'
+        message = render_to_string(self.email_template_name, context)
+
+        # Call the PHP script
+        self.send_email_via_php(subject, message, user_email)
+
+        return super().form_valid(form)
+
+    def send_email_via_php(self, subject, message, recipient_email):
+        print(os.path.join(settings.BASE_DIR, 'send_email.php'))
+        try:
+            result = subprocess.run(
+                ['php', os.path.join(settings.BASE_DIR, 'send_email.php'), subject, message, recipient_email],
+                capture_output=True,
+                text=True
+            )
+            if result.returncode != 0:
+                raise Exception(f"Failed to send email: {result.stderr}")
+        except Exception as e:
+            raise Exception(f"An error occurred: {str(e)}")
