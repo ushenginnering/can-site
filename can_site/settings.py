@@ -20,7 +20,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.getenv('DEBUG') == 'True' else False
 
-ALLOWED_HOSTS = ['churcharisenetwork.com.ng', 'ushengineering.com', 'www.churcharisenetwork.com.ng', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['churcharisenetwork.com.ng', 'ushengineering.com', 'www.churcharisenetwork.com.ng', 'localhost', '127.0.0.1', 'churcharisenetwork.com.ng.ushengineering.com']
 
 
 # Application definition
@@ -136,7 +136,7 @@ PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY')
 
 #DJANGO email backend
 # Use the default EmailBackend
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'can_site.php_email_backend.PHPMailBackend'
 EMAIL_HOST = 'mail.churcharisenetwork.com.ng'
 EMAIL_HOST_USER = 'send@churcharisenetwork.com.ng'
 EMAIL_HOST_PASSWORD = 'Z8ly_nlR3L2['

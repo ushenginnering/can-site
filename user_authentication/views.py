@@ -126,34 +126,5 @@ class CustomPasswordResetView(PasswordResetView):
         if not associated_user.exists():
             messages.error(self.request, 'Email not found. please create an acount')
             return redirect(resolve_url('login'))
-        
-        user = associated_user.first()
-        context = {
-            'email': user_email,
-            'domain': self.request.META['HTTP_HOST'],
-            'site_name': settings.SITE_NAME,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            'user': user,
-            'token': default_token_generator.make_token(user),
-            'protocol': 'https' if self.request.is_secure() else 'http',
-        }
-        subject = 'Password Reset'
-        message = render_to_string(self.email_template_name, context)
-
-        # Call the PHP script
-        self.send_email_via_php(subject, message, user_email)
 
         return super().form_valid(form)
-
-    def send_email_via_php(self, subject, message, recipient_email):
-        print(os.path.join(settings.BASE_DIR, 'send_email.php'))
-        try:
-            result = subprocess.run(
-                ['php', os.path.join(settings.BASE_DIR, 'send_email.php'), subject, message, recipient_email],
-                capture_output=True,
-                text=True
-            )
-            if result.returncode != 0:
-                raise Exception(f"Failed to send email: {result.stderr}")
-        except Exception as e:
-            raise Exception(f"An error occurred: {str(e)}")
