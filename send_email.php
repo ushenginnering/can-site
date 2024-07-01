@@ -7,7 +7,7 @@ if ($argc < 4) {
 
 // Read configuration from the config.ini file
 $config = parse_ini_file('config.ini');
-$from = $config['SENDER_EMAIL'];
+$from = 'send@churcharisenetwork.com.ng';
 $subject = $argv[1];
 $message = $argv[2];
 $to = $argv[3];  // Recipient email from the command-line argument
@@ -15,7 +15,7 @@ $headers = "From: $from\r\n";
 $headers .= "Reply-To: $from\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-
+print('sending email from php');
 if (mail($to, $subject, $message, $headers)) {
     echo "Email sent successfully!";
 } else {

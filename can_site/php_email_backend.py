@@ -14,12 +14,14 @@ class PHPMailBackend(BaseEmailBackend):
         return len(email_messages)
 
     def send_email_via_php(self, subject, message, recipient_email):
+        print(os.path.join(settings.BASE_DIR, 'send_email.php'))
         try:
             result = subprocess.run(
                 ['php', os.path.join(settings.BASE_DIR, 'send_email.php'), subject, message, recipient_email],
                 capture_output=True,
                 text=True
             )
+            print(result)
             if result.returncode != 0:
                 raise Exception(f"Failed to send email: {result.stderr}")
         except Exception as e:
