@@ -9,7 +9,7 @@ from .Paystack import PayStack
 
 def home(requests):
     context = {
-        'latest_event': Event.objects.order_by('-event_date').first(),
+        'latest_event': Event.objects.order_by('-date_created').first(),
         'announcements' : list(Announcement.objects.all()),
     }
     return render(requests, 'index.html', context)
