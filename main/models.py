@@ -32,11 +32,14 @@ class Giving(models.Model):
 
 class MeetingReport(models.Model):
     date = models.DateField()
-    details = models.TextField()
-
+    partners_name = models.CharField(max_length=255) 
+    moderator = models.CharField(max_length=255)
+    city_nation = models.CharField(max_length=255)
+    prayer_request = models.TextField()
+    general_comment = models.TextField()
 
     def __str__(self):
-        return self.details[0: 10]
+        return self.general_comment[0: 10]
     
 class Welfare(models.Model):
     member_name = models.CharField(max_length=100)

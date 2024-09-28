@@ -141,3 +141,7 @@ GitHub.sublime-settings
 
 
 php.ini
+
+# nodejs stuff
+package-lock.json
+node_modules/

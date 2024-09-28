@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from main.forms import MeetingReportForm
 from publication import transaction_type
 from .models import About, Announcement, Gallery, Giving, MeetingReport, Welfare, Publication, Event
 from .Paystack import PayStack
@@ -24,21 +25,32 @@ def gallery_view(requests):
     return render(requests, 'gallery.html', context)
 
 def partner_view(requests):
-    return render(requests, 'partners.html')
+    meeting_form = MeetingReportForm()
+    return render(requests, 'partners.html', {'meeting_form': meeting_form})
 
 def meeting_view(request):
     if request.method == 'POST':
-        meeting_report_date = request.POST.get('meetingDate')
-        meeting_report_details = request.POST.get('meetingDetails')
-
-        if not meeting_report_date or not meeting_report_details:
-            messages.error(request, 'please fill in the date and details field accordinly')
+        meeting_form = MeetingReportForm(request.POST)
+        if meeting_form.is_valid():
+            meeting_form.save()  # This will automatically save the form data into the MeetingReport model
+            messages.success(request, 'Successfully saved the meeting report and sent it to all admins.')
             return redirect('/partner')
-        
-        messages.success(request, 'successfully saved meeting report and has been sent to all admins')
-        MeetingReport.objects.create(date=meeting_report_date, details=meeting_report_details)
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    
+    else:
+        meeting_form = MeetingReportForm()
+    
+    return render(request, 'partners.html', {'meeting_form': meeting_form})
 
-    return redirect('/partner')
+def meeting_admin_view(request):
+    if not request.user.is_staff:
+        messages.error(request, "Only admins can access this page.")
+        return redirect('/login')
+    
+    reports = MeetingReport.objects.all().order_by('-date')
+    return render(request, 'admin_meeting_report.html', {'reports': reports})
+
 
 def welfare_view(request):
     if request.method == 'POST':

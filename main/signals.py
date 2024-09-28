@@ -8,10 +8,10 @@ from .models import MeetingReport, Welfare
 @receiver(post_save, sender=MeetingReport)
 def send_meeting_report_email(sender, instance, **kwargs):
     subject = 'ChurchAriseNetwork New Meeting Report'
-    message = f'A new meeting report has been saved:\n\n{instance.details}'
+    message = f'A new meeting report has been saved:\n\n{instance.general_comment}'
     admin_emails = [admin.email for admin in User.objects.filter(is_staff=True)]
 
-    send_mail(subject, message, settings.EMAIL_HOST_USER, admin_emails, fail_silently=False)
+    send_mail(subject, message, settings.EMAIL_HOST_USER, admin_emails, fail_silently=True)
     print('emails has been sent')
 
 
