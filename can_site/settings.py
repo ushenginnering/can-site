@@ -20,7 +20,16 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.getenv('DEBUG') == 'True' else False
 
-ALLOWED_HOSTS = ['churcharisenetwork.com.ng', 'ushengineering.com', 'www.churcharisenetwork.com.ng', 'localhost', '127.0.0.1', 'churcharisenetwork.com.ng.ushengineering.com']
+ALLOWED_HOSTS = [
+    'churcharisenetwork.com.ng', 
+    'ushengineering.com', 
+    'www.churcharisenetwork.com.ng', 
+    'localhost', 
+    '127.0.0.1', 
+    'churcharisenetwork.com.ng.ushengineering.com',
+    'churcharisenetworkintl.com.ng',
+    'www.churcharisenetworkintl.com.ng',
+]
 
 
 # Application definition
